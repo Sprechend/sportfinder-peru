@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Iniciar sesión | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="../index.html">Inicio</a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+            <a href="../index.html#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a href="login.html" class="login-link">
+                Iniciar sesión
+            </a>
+
+            <a href="registro.html" class="register-button">
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="auth-page">
+
+        <section class="auth-card">
+
+            <div class="auth-header">
+
+                <span>Únete a SportFinder</span>
+
+                <h1>Iniciar sesión</h1>
+
+                <p>
+                    Ingresa a tu cuenta para acceder
+                    a todas las funciones de SportFinder.
+                </p>
+
+            </div>
+
+
+            <form id="register-form" class="auth-form">
+
+                <div class="form-group">
+
+                    <label for="register-email">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="register-email"
+                        placeholder="ejemplo@correo.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="register-password"
+                        placeholder="Mínimo 6 caracteres"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="primary-button auth-button"
+                >
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+
+            <p
+                id="register-error"
+                class="form-message error-message"
+                hidden
+            >
+                ❌ Las contraseñas no coinciden.
+            </p>
+
+
+            <div
+                id="register-success"
+                class="success-card"
+                hidden
+            >
+
+                <span class="success-icon">✅</span>
+
+                <h2>¡Bienvenido a SportFinder!</h2>
+
+                <p>
+                    Has iniciado sesión correctamente.
+                </p>
+
+                <a
+                    href="buscar-canchas.html"
+                    class="primary-button"
+                >
+                    Buscar una cancha
+                </a>
+
+            </div>
+
+
+            <p class="auth-footer">
+
+               ¿No tienes una cuenta?
+
+                <a href="registro.html">
+                    Regístrate
+                </a>
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+const loginForm =
+    document.getElementById("register-form");
+
+const loginSuccess =
+    document.getElementById("register-success");
+
+loginForm.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    loginForm.hidden = true;
+
+    loginSuccess.hidden = false;
+
+});
+
+</script>
+
+<script src="../js/auth.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Consulta y administra tus reservas en SportFinder."
+    >
+
+    <title>Mis reservas | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+
+       <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+       </div>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a href="login.html" class="login-link">
+                Iniciar sesión
+            </a>
+
+            <a href="registro.html" class="register-button">
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Contenido principal -->
+    <main class="reservations-page">
+
+        <section class="reservations-container">
+
+            <div class="reservations-heading">
+
+                <div>
+
+                    <span class="reservations-label">
+                        Tu actividad
+                    </span>
+
+                    <h1>Mis reservas</h1>
+
+                    <p>
+                        Revisa las solicitudes de reserva realizadas
+                        desde SportFinder.
+                    </p>
+
+                </div>
+
+                <a
+                    href="buscar-canchas.html"
+                    class="button primary-button"
+                >
+                    Buscar otra cancha
+                </a>
+
+            </div>
+
+
+            <!-- Resumen -->
+            <div class="reservations-summary">
+
+                <article class="summary-card">
+
+                    <span>📅</span>
+
+                    <div>
+
+                        <strong id="reservation-count">
+                            0
+                        </strong>
+
+                        <p>Reservas activas</p>
+
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <span>⏳</span>
+
+                    <div>
+
+                        <strong id="pending-count">
+                            0
+                        </strong>
+
+                        <p>Pendientes</p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Lista de reservas -->
+            <section
+                class="reservations-list"
+                id="reservations-list"
+            ></section>
+
+
+            <!-- Mensaje cuando no existen reservas -->
+            <section
+                class="empty-reservations"
+                id="empty-reservations"
+                hidden
+            >
+
+                <span class="empty-reservations-icon">
+                    📅
+                </span>
+
+                <h2>Aún no tienes reservas</h2>
+
+                <p>
+                    Busca una cancha y realiza tu primera solicitud
+                    de reserva.
+                </p>
+
+                <a
+                    href="buscar-canchas.html"
+                    class="button primary-button"
+                >
+                    Buscar canchas
+                </a>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- Pie de página -->
+    <footer class="footer" id="contacto">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>SportFinder</h3>
+
+                <p>Encuentra. Reserva. Juega.</p>
+
+                <p>
+                    Una plataforma diseñada para facilitar
+                    el acceso a espacios deportivos.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h4>Enlaces</h4>
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="buscar-canchas.html">
+                    Buscar canchas
+                </a>
+
+                <a href="buscar-equipo.html">
+                    Buscar equipo
+                </a>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h4>Contacto</h4>
+
+                <p>Lima, Perú</p>
+
+                <p>sportfinder@gmail.com</p>
+
+                <p>Proyecto Crea y Emprende 2026</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SportFinder. Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const savedUser =
+                localStorage.getItem("sportfinderUser");
+
+            if (!savedUser) {
+
+                alert(
+                    "Debes iniciar sesión para revisar tus reservas."
+                );
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+            let currentUser;
+
+            try {
+
+                currentUser =
+                    JSON.parse(savedUser);
+
+            } catch (error) {
+
+                localStorage.removeItem("sportfinderUser");
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+            const reservationsList =
+                document.getElementById("reservations-list");
+
+            const emptyReservations =
+                document.getElementById("empty-reservations");
+
+            const reservationCount =
+                document.getElementById("reservation-count");
+
+            const pendingCount =
+                document.getElementById("pending-count");
+
+            const savedReservations =
+                localStorage.getItem(
+                    "sportfinderReservations"
+                );
+
+            let reservations = [];
+
+            if (savedReservations) {
+
+                try {
+
+                    reservations =
+                        JSON.parse(savedReservations);
+
+                    if (!Array.isArray(reservations)) {
+                        reservations = [];
+                    }
+
+                } catch (error) {
+
+                    reservations = [];
+
+                }
+
+            }
+
+            /*
+                Mostrar solamente las reservas correspondientes
+                al correo del usuario actual.
+            */
+
+            const userReservations =
+                reservations.filter(function (reservation) {
+
+                    return reservation.email === currentUser.email;
+
+                });
+
+
+            function formatDate(dateValue) {
+
+                if (!dateValue) {
+                    return "Fecha no disponible";
+                }
+
+                const parts =
+                    dateValue.split("-");
+
+                if (parts.length !== 3) {
+                    return dateValue;
+                }
+
+                return parts[2] + "/" +
+                    parts[1] + "/" +
+                    parts[0];
+
+            }
+
+
+            function renderReservations() {
+
+                reservationsList.innerHTML =
+                    "";
+
+                reservationCount.textContent =
+                    userReservations.length;
+
+                const pendingReservations =
+                    userReservations.filter(function (reservation) {
+
+                        return reservation.status ===
+                            "Pendiente de confirmación";
+
+                    });
+
+                pendingCount.textContent =
+                    pendingReservations.length;
+
+                if (userReservations.length === 0) {
+
+                    emptyReservations.hidden =
+                        false;
+
+                    return;
+
+                }
+
+                emptyReservations.hidden =
+                    true;
+
+                userReservations.forEach(function (reservation) {
+
+                    const reservationCard =
+                        document.createElement("article");
+
+                    reservationCard.className =
+                        "reservation-card";
+
+                    reservationCard.innerHTML = `
+
+                        <div class="reservation-card-icon">
+                            ⚽
+                        </div>
+
+                        <div class="reservation-card-content">
+
+                            <div class="reservation-card-top">
+
+                                <div>
+
+                                    <span class="reservation-sport">
+                                        ${reservation.sport || "Deporte"}
+                                    </span>
+
+                                    <h2>
+                                        ${reservation.court || "Cancha"}
+                                    </h2>
+
+                                    <p class="reservation-location">
+                                        📍 ${reservation.location || "Ubicación no disponible"}
+                                    </p>
+
+                                </div>
+
+                                <strong class="reservation-price">
+                                    S/ ${reservation.price || 0}
+                                </strong>
+
+                            </div>
+
+                            <div class="reservation-details">
+
+                                <div>
+
+                                    <span>📅 Fecha</span>
+
+                                    <strong>
+                                        ${formatDate(reservation.date)}
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <span>🕒 Horario</span>
+
+                                    <strong>
+                                        ${reservation.timeText || reservation.time}
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <span>📌 Estado</span>
+
+                                    <strong class="reservation-status">
+                                        ${reservation.status || "Pendiente"}
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="reservation-actions">
+
+                                <a
+                                    href="detalle-cancha.html"
+                                    class="secondary-button"
+                                >
+                                    Ver cancha
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="cancel-reservation-button"
+                                    data-id="${reservation.id}"
+                                >
+                                    Cancelar reserva
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                    reservationsList.appendChild(
+                        reservationCard
+                    );
+
+                });
+
+
+                const cancelButtons =
+                    document.querySelectorAll(
+                        ".cancel-reservation-button"
+                    );
+
+                cancelButtons.forEach(function (button) {
+
+                    button.addEventListener("click", function () {
+
+                        const reservationId =
+                            Number(button.dataset.id);
+
+                        const confirmCancel =
+                            confirm(
+                                "¿Seguro que deseas cancelar esta reserva?"
+                            );
+
+                        if (!confirmCancel) {
+                            return;
+                        }
+
+                        const updatedReservations =
+                            reservations.filter(function (reservation) {
+
+                                return reservation.id !== reservationId;
+
+                            });
+
+                        localStorage.setItem(
+                            "sportfinderReservations",
+                            JSON.stringify(updatedReservations)
+                        );
+
+                        window.location.reload();
+
+                    });
+
+                });
+
+            }
+
+            renderReservations();
+
+        });
+
+    </script>
+
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

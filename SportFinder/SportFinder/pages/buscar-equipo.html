@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Encuentra equipos deportivos o publica que buscas jugadores en SportFinder."
+    >
+
+    <title>Buscar equipo | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+
+        <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+        </div>
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a href="login.html" class="login-link">
+                Iniciar sesión
+            </a>
+
+            <a href="registro.html" class="register-button">
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Encabezado -->
+    <header class="team-search-hero">
+
+        <div class="team-search-hero-content">
+
+            <span class="team-search-label">
+                Conecta con otros deportistas
+            </span>
+
+            <h1>Encuentra un equipo para jugar</h1>
+
+            <p>
+                Revisa equipos que buscan jugadores o publica
+                tu propio equipo en SportFinder.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- Contenido principal -->
+    <main class="team-search-page">
+
+        <section class="team-search-container">
+
+            <!-- Filtros y botón -->
+            <div class="team-filters">
+
+                <div class="form-group">
+
+                    <label for="team-sport-filter">
+                        Deporte
+                    </label>
+
+                    <select id="team-sport-filter">
+
+                        <option value="todos">
+                            Todos
+                        </option>
+
+                        <option value="Fútbol">
+                            Fútbol
+                        </option>
+
+                        <option value="Vóley">
+                            Vóley
+                        </option>
+
+                        <option value="Básquet">
+                            Básquet
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="team-district-filter">
+                        Distrito
+                    </label>
+
+                    <select id="team-district-filter">
+
+                        <option value="todos">
+                            Todos
+                        </option>
+
+                        <option value="San Martín de Porres">
+                            San Martín de Porres
+                        </option>
+
+                        <option value="Los Olivos">
+                            Los Olivos
+                        </option>
+
+                        <option value="Independencia">
+                            Independencia
+                        </option>
+
+                        <option value="Comas">
+                            Comas
+                        </option>
+
+                        <option value="San Miguel">
+                            San Miguel
+                        </option>
+
+                        <option value="Pueblo Libre">
+                            Pueblo Libre
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="show-create-team"
+                    class="primary-button"
+                >
+                    Crear equipo
+                </button>
+
+            </div>
+
+
+            <!-- Formulario para crear equipo -->
+            <section
+                class="create-team-section"
+                id="create-team-section"
+                hidden
+            >
+
+                <div class="create-team-header">
+
+                    <div>
+
+                        <span>Nuevo equipo</span>
+
+                        <h2>Publica que buscas jugadores</h2>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="close-create-team"
+                        class="close-team-form"
+                        aria-label="Cerrar formulario"
+                    >
+                        ✕
+                    </button>
+
+                </div>
+
+                <form id="create-team-form">
+
+                    <div class="team-form-grid">
+
+                        <div class="form-group">
+
+                            <label for="team-name">
+                                Nombre del equipo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="team-name"
+                                placeholder="Ejemplo: Los Guerreros"
+                                maxlength="40"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="team-sport">
+                                Deporte
+                            </label>
+
+                            <select id="team-sport" required>
+
+                                <option value="">
+                                    Selecciona un deporte
+                                </option>
+
+                                <option value="Fútbol">
+                                    Fútbol
+                                </option>
+
+                                <option value="Vóley">
+                                    Vóley
+                                </option>
+
+                                <option value="Básquet">
+                                    Básquet
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="team-district">
+                                Distrito
+                            </label>
+
+                            <select id="team-district" required>
+
+                                <option value="">
+                                    Selecciona un distrito
+                                </option>
+
+                                <option value="San Martín de Porres">
+                                    San Martín de Porres
+                                </option>
+
+                                <option value="Los Olivos">
+                                    Los Olivos
+                                </option>
+
+                                <option value="Independencia">
+                                    Independencia
+                                </option>
+
+                                <option value="Comas">
+                                    Comas
+                                </option>
+
+                                <option value="San Miguel">
+                                    San Miguel
+                                </option>
+
+                                <option value="Pueblo Libre">
+                                    Pueblo Libre
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="team-date">
+                                Fecha del partido
+                            </label>
+
+                            <input
+                                type="date"
+                                id="team-date"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="team-time">
+                                Hora
+                            </label>
+
+                            <input
+                                type="time"
+                                id="team-time"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="team-players">
+                                Jugadores que faltan
+                            </label>
+
+                            <input
+                                type="number"
+                                id="team-players"
+                                min="1"
+                                max="20"
+                                placeholder="Ejemplo: 3"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="team-description">
+                            Descripción
+                        </label>
+
+                        <textarea
+                            id="team-description"
+                            rows="4"
+                            maxlength="250"
+                            placeholder="Explica qué tipo de jugadores buscas y cómo será el partido"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Publicar equipo
+                    </button>
+
+                </form>
+
+                <p
+                    id="create-team-message"
+                    class="form-message"
+                    hidden
+                ></p>
+
+            </section>
+
+
+            <!-- Encabezado de resultados -->
+            <div class="team-results-heading">
+
+                <div>
+
+                    <span>Equipos disponibles</span>
+
+                    <h2>Encuentra dónde jugar</h2>
+
+                </div>
+
+                <p id="team-results-count">
+                    0 equipos encontrados
+                </p>
+
+            </div>
+
+
+            <!-- Lista de equipos -->
+            <section
+                class="teams-list"
+                id="teams-list"
+            ></section>
+
+
+            <!-- Mensaje cuando no hay equipos -->
+            <section
+                class="empty-teams"
+                id="empty-teams"
+                hidden
+            >
+
+                <span class="empty-teams-icon">
+                    👥
+                </span>
+
+                <h2>Todavía no hay equipos publicados</h2>
+
+                <p>
+                    Sé la primera persona en crear un equipo
+                    y buscar jugadores.
+                </p>
+
+                <button
+                    type="button"
+                    id="empty-create-team"
+                    class="primary-button"
+                >
+                    Crear equipo
+                </button>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- Pie de página -->
+    <footer class="footer" id="contacto">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>SportFinder</h3>
+
+                <p>Encuentra. Reserva. Juega.</p>
+
+                <p>
+                    Una plataforma diseñada para facilitar
+                    el acceso a espacios deportivos.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h4>Enlaces</h4>
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="buscar-canchas.html">
+                    Buscar canchas
+                </a>
+
+                <a href="buscar-equipo.html">
+                    Buscar equipo
+                </a>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h4>Contacto</h4>
+
+                <p>Lima, Perú</p>
+
+                <p>sportfinder@gmail.com</p>
+
+                <p>Proyecto Crea y Emprende 2026</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SportFinder. Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const teamsList =
+                document.getElementById("teams-list");
+
+            const emptyTeams =
+                document.getElementById("empty-teams");
+
+            const resultsCount =
+                document.getElementById("team-results-count");
+
+            const sportFilter =
+                document.getElementById("team-sport-filter");
+
+            const districtFilter =
+                document.getElementById("team-district-filter");
+
+            const createTeamSection =
+                document.getElementById("create-team-section");
+
+            const showCreateTeam =
+                document.getElementById("show-create-team");
+
+            const emptyCreateTeam =
+                document.getElementById("empty-create-team");
+
+            const closeCreateTeam =
+                document.getElementById("close-create-team");
+
+            const createTeamForm =
+                document.getElementById("create-team-form");
+
+            const createTeamMessage =
+                document.getElementById("create-team-message");
+
+            const teamDate =
+                document.getElementById("team-date");
+
+
+            function getCurrentUser() {
+
+                const savedUser =
+                    localStorage.getItem("sportfinderUser");
+
+                if (!savedUser) {
+                    return null;
+                }
+
+                try {
+
+                    return JSON.parse(savedUser);
+
+                } catch (error) {
+
+                    localStorage.removeItem("sportfinderUser");
+
+                    return null;
+
+                }
+
+            }
+
+
+            function getTeams() {
+
+                const savedTeams =
+                    localStorage.getItem("sportfinderTeams");
+
+                if (!savedTeams) {
+                    return [];
+                }
+
+                try {
+
+                    const parsedTeams =
+                        JSON.parse(savedTeams);
+
+                    if (Array.isArray(parsedTeams)) {
+                        return parsedTeams;
+                    }
+
+                } catch (error) {
+
+                    localStorage.removeItem("sportfinderTeams");
+
+                }
+
+                return [];
+
+            }
+
+
+            let teams =
+                getTeams();
+                const oldTeamsRemoved =
+                  localStorage.getItem("sportfinderOldTeamsRemoved");
+
+                 if (!oldTeamsRemoved) {
+
+                 localStorage.removeItem("sportfinderTeams");
+
+                 localStorage.setItem(
+                      "sportfinderOldTeamsRemoved",
+                     "true"
+                         );
+
+                      teams = [];
+
+              }
+
+
+            function saveTeams() {
+
+                localStorage.setItem(
+                    "sportfinderTeams",
+                    JSON.stringify(teams)
+                );
+
+            }
+
+
+            function getTodayDate() {
+
+                const today =
+                    new Date();
+
+                const year =
+                    today.getFullYear();
+
+                const month =
+                    String(today.getMonth() + 1).padStart(2, "0");
+
+                const day =
+                    String(today.getDate()).padStart(2, "0");
+
+                return year + "-" + month + "-" + day;
+
+            }
+
+
+            teamDate.min =
+                getTodayDate();
+
+
+            function formatDate(dateValue) {
+
+                const parts =
+                    dateValue.split("-");
+
+                if (parts.length !== 3) {
+                    return dateValue;
+                }
+
+                return parts[2] + "/" +
+                    parts[1] + "/" +
+                    parts[0];
+
+            }
+
+
+            function formatTime(timeValue) {
+
+                const parts =
+                    timeValue.split(":");
+
+                if (parts.length < 2) {
+                    return timeValue;
+                }
+
+                let hour =
+                    Number(parts[0]);
+
+                const minutes =
+                    parts[1];
+
+                const period =
+                    hour >= 12
+                        ? "p. m."
+                        : "a. m.";
+
+                if (hour > 12) {
+                    hour -= 12;
+                }
+
+                if (hour === 0) {
+                    hour = 12;
+                }
+
+                return hour +
+                    ":" +
+                    minutes +
+                    " " +
+                    period;
+
+            }
+
+
+            function getSportIcon(sport) {
+
+                if (sport === "Fútbol") {
+                    return "⚽";
+                }
+
+                if (sport === "Vóley") {
+                    return "🏐";
+                }
+
+                if (sport === "Básquet") {
+                    return "🏀";
+                }
+
+                return "🏅";
+
+            }
+
+
+            function openCreateTeamForm() {
+
+                const currentUser =
+                    getCurrentUser();
+
+                if (!currentUser) {
+
+                    alert(
+                        "Debes iniciar sesión para crear un equipo."
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+                createTeamSection.hidden =
+                    false;
+
+                createTeamMessage.hidden =
+                    true;
+
+                createTeamSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+
+            function renderTeams() {
+
+                const selectedSport =
+                    sportFilter.value;
+
+                const selectedDistrict =
+                    districtFilter.value;
+
+                const currentUser =
+                    getCurrentUser();
+
+                const filteredTeams =
+                    teams.filter(function (team) {
+
+                        const matchesSport =
+                            selectedSport === "todos" ||
+                            team.sport === selectedSport;
+
+                        const matchesDistrict =
+                            selectedDistrict === "todos" ||
+                            team.district === selectedDistrict;
+
+                        return matchesSport && matchesDistrict;
+
+                    });
+
+
+                teamsList.innerHTML =
+                    "";
+
+
+                resultsCount.textContent =
+                    filteredTeams.length +
+                    (
+                        filteredTeams.length === 1
+                            ? " equipo encontrado"
+                            : " equipos encontrados"
+                    );
+
+
+                if (filteredTeams.length === 0) {
+
+                    emptyTeams.hidden =
+                        false;
+
+                    return;
+
+                }
+
+
+                emptyTeams.hidden =
+                    true;
+
+
+                filteredTeams.forEach(function (team) {
+
+                    const members =
+                        Array.isArray(team.members)
+                            ? team.members
+                            : [];
+
+                    const alreadyJoined =
+                        currentUser &&
+                        members.includes(currentUser.email);
+
+                    const isCreator =
+                        currentUser &&
+                        team.creator === currentUser.email;
+
+                    const teamCard =
+                        document.createElement("article");
+
+                    teamCard.className =
+                        "team-card";
+
+
+                    let buttonText =
+                        "Unirme al equipo";
+
+                    let buttonDisabled =
+                        false;
+
+
+                    if (isCreator) {
+
+                        buttonText =
+                            "Equipo creado por ti";
+
+                        buttonDisabled =
+                            true;
+
+                    } else if (alreadyJoined) {
+
+                        buttonText =
+                            "Ya estás unido";
+
+                        buttonDisabled =
+                            true;
+
+                    } else if (team.playersNeeded <= 0) {
+
+                        buttonText =
+                            "Equipo completo";
+
+                        buttonDisabled =
+                            true;
+
+                    }
+
+
+                    const creatorName =
+    team.creatorName ||
+    "Usuario de SportFinder";
+
+const publishedToday =
+    team.createdAt &&
+    new Date(team.createdAt).toDateString() ===
+    new Date().toDateString();
+
+teamCard.innerHTML = `
+
+    <div class="team-card-top">
+
+        <div class="team-card-header">
+
+            <div class="team-icon">
+                ${getSportIcon(team.sport)}
+            </div>
+
+            <div class="team-card-title">
+
+                <div class="team-card-labels">
+
+                    <span class="team-sport">
+                        ${team.sport}
+                    </span>
+
+                    ${
+                        publishedToday
+                            ? `
+                                <span class="team-published-today">
+                                    Publicado hoy
+                                </span>
+                            `
+                            : ""
+                    }
+
+                </div>
+
+                <h3>
+                    ${team.name}
+                </h3>
+
+                <p class="team-location">
+                    📍 ${team.district}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="team-vacancies">
+
+            <span>Vacantes</span>
+
+            <strong>
+                ${team.playersNeeded}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="team-creator">
+
+        <div class="team-creator-avatar">
+
+            ${creatorName.charAt(0).toUpperCase()}
+
+        </div>
+
+        <div>
+
+            <span>Publicado por</span>
+
+            <strong>
+                ${creatorName}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <p class="team-description">
+        ${team.description}
+    </p>
+
+
+    <div class="team-info-grid">
+
+        <div class="team-info-item">
+
+            <span>📅 Fecha</span>
+
+            <strong>
+                ${formatDate(team.date)}
+            </strong>
+
+        </div>
+
+        <div class="team-info-item">
+
+            <span>🕒 Hora</span>
+
+            <strong>
+                ${formatTime(team.time)}
+            </strong>
+
+        </div>
+
+        <div class="team-info-item">
+
+            <span>🏅 Deporte</span>
+
+            <strong>
+                ${team.sport}
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="join-team-button"
+        data-id="${team.id}"
+        ${buttonDisabled ? "disabled" : ""}
+    >
+        ${buttonText}
+    </button>
+
+`;
+
+                    teamsList.appendChild(teamCard);
+
+                });
+
+
+                const joinButtons =
+                    document.querySelectorAll(
+                        ".join-team-button:not([disabled])"
+                    );
+
+
+                joinButtons.forEach(function (button) {
+
+                    button.addEventListener("click", function () {
+
+                        const currentUser =
+                            getCurrentUser();
+
+                        if (!currentUser) {
+
+                            alert(
+                                "Debes iniciar sesión para unirte a un equipo."
+                            );
+
+                            window.location.href =
+                                "login.html";
+
+                            return;
+
+                        }
+
+
+                        const teamId =
+                            Number(button.dataset.id);
+
+
+                        const selectedTeam =
+                            teams.find(function (team) {
+
+                                return team.id === teamId;
+
+                            });
+
+
+                        if (!selectedTeam) {
+                            return;
+                        }
+
+
+                        if (!Array.isArray(selectedTeam.members)) {
+
+                            selectedTeam.members =
+                                [];
+
+                        }
+
+
+                        if (
+                            selectedTeam.members.includes(
+                                currentUser.email
+                            )
+                        ) {
+
+                            alert(
+                                "Ya estás unido a este equipo."
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (selectedTeam.playersNeeded <= 0) {
+
+                            alert(
+                                "Este equipo ya está completo."
+                            );
+
+                            renderTeams();
+
+                            return;
+
+                        }
+
+
+                        selectedTeam.members.push(
+                            currentUser.email
+                        );
+
+                        selectedTeam.playersNeeded -=
+                            1;
+
+
+                        saveTeams();
+
+
+                        alert(
+                            "Te uniste correctamente al equipo " +
+                            selectedTeam.name +
+                            "."
+                        );
+
+
+                        renderTeams();
+
+                    });
+
+                });
+
+            }
+
+
+            showCreateTeam.addEventListener(
+                "click",
+                openCreateTeamForm
+            );
+
+
+            emptyCreateTeam.addEventListener(
+                "click",
+                openCreateTeamForm
+            );
+
+
+            closeCreateTeam.addEventListener(
+                "click",
+                function () {
+
+                    createTeamSection.hidden =
+                        true;
+
+                    createTeamMessage.hidden =
+                        true;
+
+                    createTeamForm.reset();
+
+                    teamDate.min =
+                        getTodayDate();
+
+                }
+            );
+
+
+            createTeamForm.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const currentUser =
+                        getCurrentUser();
+
+
+                    if (!currentUser) {
+
+                        alert(
+                            "Tu sesión no está activa. Inicia sesión nuevamente."
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+
+                    }
+
+
+                    const selectedDate =
+                        teamDate.value;
+
+
+                    if (selectedDate < getTodayDate()) {
+
+                        createTeamMessage.textContent =
+                            "Selecciona una fecha válida.";
+
+                        createTeamMessage.hidden =
+                            false;
+
+                        return;
+
+                    }
+
+
+                    const newTeam = {
+
+                        id:
+                            Date.now(),
+
+                        name:
+                            document
+                                .getElementById("team-name")
+                                .value
+                                .trim(),
+
+                        sport:
+                            document
+                                .getElementById("team-sport")
+                                .value,
+
+                        district:
+                            document
+                                .getElementById("team-district")
+                                .value,
+
+                        date:
+                            selectedDate,
+
+                        time:
+                            document
+                                .getElementById("team-time")
+                                .value,
+
+                        playersNeeded:
+                            Number(
+                                document
+                                    .getElementById("team-players")
+                                    .value
+                            ),
+
+                        description:
+                            document
+                                .getElementById("team-description")
+                                .value
+                                .trim(),
+
+                        creator:
+                            currentUser.email,
+
+                        creatorName:
+                            currentUser.name ||
+                            currentUser.nombre ||
+                            "Usuario de SportFinder",
+                            createdAt:
+                            new Date().toISOString(),
+
+                        members:
+                            []
+
+                    };
+
+
+                    teams.unshift(
+                        newTeam
+                    );
+
+
+                    saveTeams();
+
+
+                    createTeamMessage.textContent =
+                        "✅ Tu equipo fue publicado correctamente.";
+
+                    createTeamMessage.hidden =
+                        false;
+
+
+                    createTeamForm.reset();
+
+
+                    teamDate.min =
+                        getTodayDate();
+
+
+                    sportFilter.value =
+                        "todos";
+
+                    districtFilter.value =
+                        "todos";
+
+
+                    renderTeams();
+
+
+                    setTimeout(function () {
+
+                        createTeamSection.hidden =
+                            true;
+
+                        createTeamMessage.hidden =
+                            true;
+
+                    }, 1500);
+
+                }
+            );
+
+
+            sportFilter.addEventListener(
+                "change",
+                renderTeams
+            );
+
+
+            districtFilter.addEventListener(
+                "change",
+                renderTeams
+            );
+
+
+            renderTeams();
+
+        });
+
+    </script>
+
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

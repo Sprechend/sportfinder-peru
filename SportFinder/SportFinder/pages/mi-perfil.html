@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mi perfil | SportFinder</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a
+                href="login.html"
+                class="login-link"
+            >
+                Iniciar sesión
+            </a>
+
+            <a
+                href="registro.html"
+                class="register-button"
+            >
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+    <main class="profile-page">
+
+        <section class="profile-card">
+
+            <div
+                class="profile-avatar"
+                id="profile-avatar"
+            >
+                U
+            </div>
+
+            <h1>Mi perfil</h1>
+
+            <p class="profile-description">
+                Revisa la información de tu cuenta.
+            </p>
+
+            <div class="profile-data">
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Nombre completo
+                    </span>
+
+                    <strong id="profile-name">
+                        Usuario
+                    </strong>
+
+                </div>
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Correo electrónico
+                    </span>
+
+                    <strong id="profile-email">
+                        usuario@correo.com
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="button primary-button"
+                id="edit-name-button"
+            >
+                Editar nombre
+            </button>
+
+            <p
+                id="profile-message"
+                class="profile-message"
+                hidden
+            ></p>
+
+        </section>
+
+    </main>
+
+    <script src="../js/auth.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const savedUser =
+                localStorage.getItem("sportfinderUser");
+
+            if (!savedUser) {
+
+                window.location.href = "login.html";
+                return;
+
+            }
+
+            const user =
+                JSON.parse(savedUser);
+
+            const profileAvatar =
+                document.getElementById("profile-avatar");
+
+            const profileName =
+                document.getElementById("profile-name");
+
+            const profileEmail =
+                document.getElementById("profile-email");
+
+            const editNameButton =
+                document.getElementById("edit-name-button");
+
+            const profileMessage =
+                document.getElementById("profile-message");
+
+            profileAvatar.textContent =
+                user.name.charAt(0).toUpperCase();
+
+            profileName.textContent =
+                user.name;
+
+            profileEmail.textContent =
+                user.email;
+
+            editNameButton.addEventListener("click", function () {
+
+                const newName =
+                    prompt(
+                        "Escribe tu nuevo nombre:",
+                        user.name
+                    );
+
+                if (!newName || !newName.trim()) {
+                    return;
+                }
+
+                user.name =
+                    newName.trim();
+
+                localStorage.setItem(
+                    "sportfinderUser",
+                    JSON.stringify(user)
+                );
+
+                profileName.textContent =
+                    user.name;
+
+                profileAvatar.textContent =
+                    user.name.charAt(0).toUpperCase();
+
+                profileMessage.textContent =
+                    "Nombre actualizado correctamente.";
+
+                profileMessage.hidden = false;
+
+                setTimeout(function () {
+
+                    window.location.reload();
+
+                }, 1000);
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

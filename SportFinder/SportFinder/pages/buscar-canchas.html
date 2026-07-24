@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Busca y compara canchas de fútbol y vóley en SportFinder."
+    >
+
+    <title>Buscar Canchas | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+   <nav class="navbar">
+
+    <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+    </div>
+
+    <div class="menu">
+        <a href="../index.html">Inicio</a>
+        <a href="buscar-canchas.html">Buscar canchas</a>
+        <a href="../index.html#como-funciona">¿Cómo funciona?</a>
+        <a href="../index.html#contacto">Contacto</a>
+    </div>
+
+    <div class="nav-buttons">
+
+        <a href="login.html" class="login-link">
+            Iniciar sesión
+        </a>
+
+        <a href="registro.html" class="register-button">
+            Registrarse
+        </a>
+
+    </div>
+
+</nav>
+
+    <!-- Presentación de la página -->
+    <header class="search-hero">
+
+        <div class="search-hero-content">
+
+            <span>Encuentra tu espacio deportivo</span>
+
+            <h1>Busca la cancha ideal para tu próximo partido</h1>
+
+            <p>
+                Compara precios, ubicaciones y tipos de cancha
+                de manera rápida y sencilla.
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- Filtros de búsqueda -->
+    <section class="court-search-section">
+
+        <div class="search-panel">
+
+            <div class="search-panel-heading">
+
+                <h2>Buscar canchas</h2>
+
+                <p>
+                    Utiliza los filtros para encontrar una cancha
+                    que se adapte a tus necesidades.
+                </p>
+
+            </div>
+
+            <form class="court-search-form">
+
+                <div class="form-group">
+
+                    <label for="court-name">Nombre de la cancha</label>
+
+                    <input
+                        type="text"
+                        id="court-name"
+                        placeholder="Ejemplo: Arena 7"
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="district">Distrito</label>
+
+                    <select id="district">
+
+                        <option value="">Todos los distritos</option>
+                        <option value="pueblo-libre">Pueblo Libre</option>
+                        <option value="san-miguel">San Miguel</option>
+                        <option value="jesus-maria">Jesús María</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="sport">Deporte</label>
+
+                    <select id="sport">
+
+                        <option value="">Todos los deportes</option>
+                        <option value="futbol">Fútbol</option>
+                        <option value="voley">Vóley</option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit" class="search-button">
+                    Buscar
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- Resultados -->
+    <main class="search-results">
+
+        <div class="results-heading">
+
+            <div>
+
+                <span>Resultados disponibles</span>
+
+                <h2>Canchas encontradas</h2>
+
+            </div>
+
+            <p>3 canchas disponibles</p>
+
+        </div>
+
+        <div class="cards">
+
+            <!-- Cancha 1 -->
+            <article class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="../img/arena7.jpg"
+                        alt="Cancha deportiva Arena 7"
+                    >
+
+                    <span class="availability">
+                        Disponible
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-title">
+
+                        <h3>Arena 7</h3>
+
+                        <span class="rating">
+                            ★ 4.8
+                        </span>
+
+                    </div>
+
+                    <p class="location">
+                        📍 Pueblo Libre, Lima
+                    </p>
+
+                    <p class="sport-type">
+                        ⚽ Fútbol 7
+                    </p>
+
+                    <div class="card-footer">
+
+                        <p class="price">
+                            Desde <strong>S/ 70</strong> por hora
+                        </p>
+
+                        <a
+                            href="detalle-cancha.html"
+                            class="card-button"
+                        >
+                            Ver cancha
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- Cancha 2 -->
+            <article class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="../img/mama-ocllo.jpg"
+                        alt="Cancha deportiva Mama Ocllo"
+                    >
+
+                    <span class="availability">
+                        Disponible
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-title">
+
+                        <h3>Mama Ocllo</h3>
+
+                        <span class="rating">
+                            ★ 4.5
+                        </span>
+
+                    </div>
+
+                    <p class="location">
+                        📍 Pueblo Libre, Lima
+                    </p>
+
+                    <p class="sport-type">
+                        🏐 Cancha de vóley
+                    </p>
+
+                    <div class="card-footer">
+
+                        <p class="price">
+                            Desde <strong>S/ 60</strong> por hora
+                        </p>
+
+                        <a
+                            href="detalle-cancha.html"
+                            class="card-button"
+                        >
+                            Ver cancha
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- Cancha 3 -->
+            <article class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="../img/julio-melendez.jpg"
+                        alt="Complejo deportivo Julio Meléndez"
+                    >
+
+                    <span class="availability">
+                        Disponible
+                    </span>
+
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-title">
+
+                        <h3>Julio Meléndez</h3>
+
+                        <span class="rating">
+                            ★ 4.7
+                        </span>
+
+                    </div>
+
+                    <p class="location">
+                        📍 San Miguel, Lima
+                    </p>
+
+                    <p class="sport-type">
+                        ⚽ Fútbol 7
+                    </p>
+
+                    <div class="card-footer">
+
+                        <p class="price">
+                            Desde <strong>S/ 65</strong> por hora
+                        </p>
+
+                        <a
+                            href="detalle-cancha.html"
+                            class="card-button"
+                        >
+                            Ver cancha
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- Pie de página -->
+<footer class="footer" id="contacto">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <h3>SportFinder</h3>
+
+            <p>Encuentra. Reserva. Juega.</p>
+
+            <p>
+                Una plataforma diseñada para facilitar
+                el acceso a espacios deportivos.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <h4>Enlaces</h4>
+
+            <a href="../index.html">Inicio</a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+        </div>
+
+        <div class="footer-contact">
+
+            <h4>Contacto</h4>
+
+            <p>Lima, Perú</p>
+
+            <p>sportfinder@gmail.com</p>
+
+            <p>Proyecto Crea y Emprende 2026</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 SportFinder. Todos los derechos reservados.
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="../js/auth.js"></script>
+
+</body>
+
+</html>
