@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Consulta información, horarios y precios de Arena 7 en SportFinder."
+    >
+
+    <title>Arena 7 | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+
+        <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+       </div>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a href="login.html" class="login-link">
+                Iniciar sesión
+            </a>
+
+            <a href="registro.html" class="register-button">
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Galería -->
+    <section class="gallery">
+
+        <div class="gallery-main">
+
+        <img
+        src="../img/arena7.jpg"
+        alt="Vista de la cancha"
+        id="court-main-image"
+        >
+
+        </div>
+
+        <div class="gallery-side">
+
+            <img
+                src="../img/arena7.jpg"
+                alt="Vista de Arena 7"
+            >
+
+            <img
+                src="../img/julio-melendez.jpg"
+                alt="Cancha deportiva referencial"
+            >
+
+            <img
+                src="../img/mama-ocllo.jpg"
+                alt="Espacio deportivo referencial"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- Información principal -->
+    <main class="court-info">
+
+        <section class="court-details">
+
+            <span class="court-category">
+                Cancha de fútbol
+            </span>
+
+            <h1 id="court-title">Arena 7</h1>
+
+            <div class="court-rating">
+
+                <span>📋</span>
+
+                <p>Información referencial</p>
+
+            </div>
+
+            <p class="court-location" id="court-location">
+             📍 Pueblo Libre, Lima
+            </p>
+
+            <p class="court-type" id="court-type">
+    ⚽ Fútbol 7 • Césped sintético
+</p>
+            <a href="#opiniones" class="secondary-button">
+                Dar una opinión
+            </a>
+
+            <a href="buscar-equipo.html" class="secondary-button">
+                Buscar un equipo
+            </a>
+
+            <div class="quick-info">
+
+                <h3>Información rápida</h3>
+
+                <div class="quick-info-item">
+
+                    <span>💰</span>
+
+                    <div>
+
+                        <strong>Precio aproximado</strong>
+
+                        <p>Desde S/ 60 por turno.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="quick-info-item">
+
+                    <span>🕒</span>
+
+                    <div>
+
+                        <strong>Horarios disponibles</strong>
+
+                        <p>De 4:00 p. m. a 8:00 p. m.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="quick-info-item">
+
+                    <span>📍</span>
+
+                    <div>
+
+                        <strong>Ubicación</strong>
+
+                        <p>Pueblo Libre, Lima.</p>
+
+                    </div>
+
+                </div>
+
+                <div class="quick-info-item">
+
+                    <span>⚽</span>
+
+                    <div>
+
+                        <strong>Cancha</strong>
+
+                        <p>Fútbol 7 - Césped sintético.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Tarjeta para reservar -->
+        <aside class="booking-card">
+
+            <span class="estimated-label">
+                Precio aproximado
+            </span>
+
+            <h2 id="court-price">Desde S/ 60</h2>
+
+            <p>
+                El precio puede variar según el día,
+                la hora y la disponibilidad.
+            </p>
+
+            <form id="reservation-form" class="reservation-form">
+
+                <div class="form-group">
+
+                    <label for="reservation-name">
+                        Nombre completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="reservation-name"
+                        placeholder="Escribe tu nombre"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="reservation-date">
+                        Fecha
+                    </label>
+
+                    <input
+                        type="date"
+                        id="reservation-date"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="reservation-time">
+                        Hora
+                    </label>
+
+                    <select id="reservation-time" required>
+
+                        <option value="">
+                            Selecciona una hora
+                        </option>
+
+                        <option value="16:00">
+                            4:00 p. m.
+                        </option>
+
+                        <option value="17:00">
+                            5:00 p. m.
+                        </option>
+
+                        <option value="18:00">
+                            6:00 p. m.
+                        </option>
+
+                        <option value="19:00">
+                            7:00 p. m.
+                        </option>
+
+                        <option value="20:00">
+                            8:00 p. m.
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Intentar reservar
+                </button>
+
+            </form>
+
+            <p
+                id="reservation-message"
+                class="form-message"
+                hidden
+            ></p>
+
+            <a
+                href="mis-reservas.html"
+                id="view-reservations-link"
+                class="secondary-button"
+                hidden
+            >
+                Ver mis reservas
+            </a>
+
+            <p class="booking-note">
+                📞 ¿Tienes dudas? Comunícate con la cancha para
+                confirmar disponibilidad y horarios.
+            </p>
+
+        </aside>
+
+    </main>
+
+
+    <!-- Descripción -->
+    <section class="description-section">
+
+        <div class="section-title">
+
+            <span>Conoce Arena 7</span>
+
+            <h2>Descripción</h2>
+
+        </div>
+
+        <div class="description-content">
+
+            <p>
+                Arena 7 es una cancha de fútbol 7 ubicada en
+                Pueblo Libre. Es una opción para quienes buscan
+                un espacio para partidos recreativos,
+                entrenamientos o encuentros entre amigos.
+            </p>
+
+            <p>
+                La información mostrada en SportFinder tiene
+                fines referenciales. Se recomienda contactar
+                directamente con la cancha para confirmar sus
+                precios, horarios, disponibilidad y servicios.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Servicios -->
+    <section class="services-section">
+
+        <div class="section-title">
+
+            <span>¿Qué ofrece Arena 7?</span>
+
+            <h2>Servicios disponibles</h2>
+
+            <p>
+                Los servicios deben confirmarse directamente
+                con el establecimiento.
+            </p>
+
+        </div>
+
+        <div class="services-grid">
+
+            <article class="service-card">
+
+                <span class="service-icon">💡</span>
+
+                <h3>Iluminación nocturna</h3>
+
+                <p>
+                    Servicio por confirmar directamente
+                    con la cancha.
+                </p>
+
+            </article>
+
+            <article class="service-card">
+
+                <span class="service-icon">🚗</span>
+
+                <h3>Estacionamiento</h3>
+
+                <p>
+                    Servicio por confirmar directamente
+                    con la cancha.
+                </p>
+
+            </article>
+
+            <article class="service-card">
+
+                <span class="service-icon">🚿</span>
+
+                <h3>Duchas</h3>
+
+                <p>
+                    Servicio por confirmar directamente
+                    con la cancha.
+                </p>
+
+            </article>
+
+            <article class="service-card">
+
+                <span class="service-icon">🥤</span>
+
+                <h3>Cafetería</h3>
+
+                <p>
+                    Servicio por confirmar directamente
+                    con la cancha.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- Horarios -->
+    <section class="schedule-section">
+
+        <div class="section-title">
+
+            <span>Horarios referenciales</span>
+
+            <h2>Disponibilidad</h2>
+
+            <p>
+                Estos horarios pueden cambiar y deben
+                confirmarse antes de reservar.
+            </p>
+
+        </div>
+
+        <div class="schedule-grid">
+
+            <article class="schedule-card">
+
+                <h3>Lunes a viernes</h3>
+
+                <p>8:00 a. m. - 10:00 p. m.</p>
+
+            </article>
+
+            <article class="schedule-card">
+
+                <h3>Sábado</h3>
+
+                <p>8:00 a. m. - 11:00 p. m.</p>
+
+            </article>
+
+            <article class="schedule-card">
+
+                <h3>Domingo</h3>
+
+                <p>9:00 a. m. - 9:00 p. m.</p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- Ubicación -->
+    <section class="location-section">
+
+        <div class="section-title">
+
+            <span>Ubicación</span>
+
+            <h2>¿Dónde se encuentra?</h2>
+
+        </div>
+
+        <div class="location-box">
+
+            <h3>📍 Arena 7</h3>
+
+            <p>
+                Pueblo Libre, Lima, Perú
+            </p>
+
+            <div class="map-placeholder">
+
+                <span>🗺️</span>
+
+                <h3>Mapa próximamente</h3>
+
+                <p>
+                    En una futura versión se mostrará aquí
+                    la ubicación mediante un mapa interactivo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Opiniones -->
+    <section class="reviews-section" id="opiniones">
+
+        <div class="section-title">
+
+            <span>Comparte tu experiencia</span>
+
+            <h2>Dar una opinión</h2>
+
+            <p>
+                Ayuda a otros deportistas contando
+                cómo fue tu experiencia.
+            </p>
+
+        </div>
+
+        <form id="review-form" class="review-form">
+
+            <div class="form-group">
+
+                <label for="review-name">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="review-name"
+                    placeholder="Escribe tu nombre"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="review-rating">
+                    Calificación
+                </label>
+
+                <select id="review-rating" required>
+
+                    <option value="">
+                        Selecciona una calificación
+                    </option>
+
+                    <option value="5">
+                        ★★★★★ Excelente
+                    </option>
+
+                    <option value="4">
+                        ★★★★☆ Muy buena
+                    </option>
+
+                    <option value="3">
+                        ★★★☆☆ Regular
+                    </option>
+
+                    <option value="2">
+                        ★★☆☆☆ Mala
+                    </option>
+
+                    <option value="1">
+                        ★☆☆☆☆ Muy mala
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="review-comment">
+                    Opinión
+                </label>
+
+                <textarea
+                    id="review-comment"
+                    rows="5"
+                    placeholder="Escribe tu opinión sobre la cancha"
+                    required
+                ></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                Enviar opinión
+            </button>
+
+        </form>
+
+        <p
+            id="review-message"
+            class="form-message"
+            hidden
+        >
+            ⭐ Gracias por compartir tu opinión en SportFinder.
+        </p>
+
+    </section>
+
+
+    <!-- Aviso informativo -->
+    <section class="information-note">
+
+        <p>
+            ⚠️ La información mostrada en SportFinder es de
+            carácter referencial y puede cambiar con el tiempo.
+            Se recomienda contactar directamente con el
+            establecimiento antes de realizar una reserva.
+        </p>
+
+    </section>
+
+
+    <!-- Pie de página -->
+    <footer class="footer" id="contacto">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>SportFinder</h3>
+
+                <p>Encuentra. Reserva. Juega.</p>
+
+                <p>
+                    Una plataforma diseñada para facilitar
+                    el acceso a espacios deportivos.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h4>Enlaces</h4>
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="buscar-canchas.html">
+                    Buscar canchas
+                </a>
+
+                <a href="buscar-equipo.html">
+                    Buscar equipo
+                </a>
+
+                <a href="../index.html#como-funciona">
+                    ¿Cómo funciona?
+                </a>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h4>Contacto</h4>
+
+                <p>Lima, Perú</p>
+
+                <p>sportfinder@gmail.com</p>
+
+                <p>Proyecto Crea y Emprende 2026</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SportFinder. Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {const courts = {
+
+    "arena7": {
+        name: "Arena 7",
+        sport: "Fútbol 7",
+        type: "⚽ Fútbol 7 • Césped sintético",
+        location: "Pueblo Libre, Lima",
+        price: 60,
+        image: "../img/arena7.jpg"
+    },
+
+    "mama-ocllo": {
+        name: "Mama Ocllo",
+        sport: "Vóley",
+        type: "🏐 Cancha de vóley",
+        location: "Pueblo Libre, Lima",
+        price: 60,
+        image: "../img/mama-ocllo.jpg"
+    },
+
+    "julio-melendez": {
+        name: "Julio Meléndez",
+        sport: "Fútbol 7",
+        type: "⚽ Fútbol 7 • Césped sintético",
+        location: "San Miguel, Lima",
+        price: 65,
+        image: "../img/julio-melendez.jpg"
+    }
+
+};
+
+
+/* Saber qué cancha seleccionó el usuario */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const courtId =
+    params.get("cancha") || "arena7";
+
+const selectedCourt =
+    courts[courtId] || courts["arena7"];
+
+
+/* Mostrar los datos de la cancha */
+
+document.getElementById("court-title").textContent =
+    selectedCourt.name;
+
+document.getElementById("court-location").textContent =
+    "📍 " + selectedCourt.location;
+
+document.getElementById("court-type").textContent =
+    selectedCourt.type;
+
+document.getElementById("court-price").textContent =
+    "Desde S/ " + selectedCourt.price;
+
+document.getElementById("court-main-image").src =
+    selectedCourt.image;
+
+document.getElementById("court-main-image").alt =
+    "Vista principal de " + selectedCourt.name;
+
+
+/* Cambiar título de la pestaña */
+
+document.title =
+    selectedCourt.name + " | SportFinder";
+
+            const reservationForm =
+                document.getElementById("reservation-form");
+
+            const reservationName =
+                document.getElementById("reservation-name");
+
+            const reservationDate =
+                document.getElementById("reservation-date");
+
+            const reservationTime =
+                document.getElementById("reservation-time");
+
+            const reservationMessage =
+                document.getElementById("reservation-message");
+
+            const viewReservationsLink =
+                document.getElementById("view-reservations-link");
+
+            const reviewForm =
+                document.getElementById("review-form");
+
+            const reviewName =
+                document.getElementById("review-name");
+
+            const reviewMessage =
+                document.getElementById("review-message");
+
+
+            /* Evitar seleccionar fechas anteriores */
+
+            const today =
+                new Date();
+
+            const currentDate =
+                today.getFullYear() + "-" +
+                String(today.getMonth() + 1).padStart(2, "0") + "-" +
+                String(today.getDate()).padStart(2, "0");
+
+            reservationDate.min =
+                currentDate;
+
+
+            /* Colocar los datos del usuario */
+
+            const savedUser =
+                localStorage.getItem("sportfinderUser");
+
+            if (savedUser) {
+
+                try {
+
+                    const user =
+                        JSON.parse(savedUser);
+
+                    reservationName.value =
+                        user.name;
+
+                    reviewName.value =
+                        user.name;
+
+                } catch (error) {
+
+                    localStorage.removeItem("sportfinderUser");
+
+                }
+
+            }
+
+
+            /* Guardar la reserva */
+
+            reservationForm.addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const currentUser =
+                    localStorage.getItem("sportfinderUser");
+
+                if (!currentUser) {
+
+                    alert(
+                        "Debes crear una cuenta o iniciar sesión para reservar."
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+                let user;
+
+                try {
+
+                    user =
+                        JSON.parse(currentUser);
+
+                } catch (error) {
+
+                    localStorage.removeItem("sportfinderUser");
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+                const selectedDate =
+                    reservationDate.value;
+
+                const selectedTime =
+                    reservationTime.value;
+
+                const selectedOption =
+                    reservationTime.options[
+                        reservationTime.selectedIndex
+                    ];
+
+                if (!selectedDate || !selectedTime) {
+
+                    reservationMessage.textContent =
+                        "❌ Selecciona una fecha y una hora.";
+
+                    reservationMessage.hidden =
+                        false;
+
+                    return;
+
+                }
+
+                const newReservation = {
+
+    id: Date.now(),
+
+    court: selectedCourt.name,
+
+    sport: selectedCourt.sport,
+
+    location: selectedCourt.location,
+
+                    name: reservationName.value.trim(),
+
+                    email: user.email,
+
+                    date: selectedDate,
+
+                    time: selectedTime,
+
+                    timeText:
+                        selectedOption.textContent.trim(),
+
+                    price: selectedCourt.price,
+
+                    status: "Pendiente de confirmación"
+
+                };
+
+                const savedReservations =
+                    localStorage.getItem(
+                        "sportfinderReservations"
+                    );
+
+                let reservations = [];
+
+                if (savedReservations) {
+
+                    try {
+
+                        reservations =
+                            JSON.parse(savedReservations);
+
+                        if (!Array.isArray(reservations)) {
+                            reservations = [];
+                        }
+
+                    } catch (error) {
+
+                        reservations = [];
+
+                    }
+
+                }
+
+                reservations.push(newReservation);
+
+                localStorage.setItem(
+                    "sportfinderReservations",
+                    JSON.stringify(reservations)
+                );
+
+                reservationMessage.textContent =
+                    "✅ Solicitud guardada. Puedes revisarla en Mis reservas.";
+
+                reservationMessage.hidden =
+                    false;
+
+                viewReservationsLink.hidden =
+                    false;
+
+                reservationForm.reset();
+
+                reservationName.value =
+                    user.name;
+
+                reservationDate.min =
+                    currentDate;
+
+            });
+
+
+            /* Formulario de opiniones */
+
+            reviewForm.addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const currentUser =
+                    localStorage.getItem("sportfinderUser");
+
+                if (!currentUser) {
+
+                    alert(
+                        "Debes crear una cuenta o iniciar sesión para opinar."
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+                reviewMessage.hidden =
+                    false;
+
+                reviewForm.reset();
+
+                try {
+
+                    const user =
+                        JSON.parse(currentUser);
+
+                    reviewName.value =
+                        user.name;
+
+                } catch (error) {
+
+                    localStorage.removeItem("sportfinderUser");
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

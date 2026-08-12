@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Consulta y administra tus reservas en SportFinder."
+    >
+
+    <title>Mis reservas | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+
+       <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+       </div>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a href="login.html" class="login-link">
+                Iniciar sesión
+            </a>
+
+            <a href="registro.html" class="register-button">
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Contenido principal -->
+    <main class="reservations-page">
+
+        <section class="reservations-container">
+
+            <div class="reservations-heading">
+
+                <div>
+
+                    <span class="reservations-label">
+                        Tu actividad
+                    </span>
+
+                    <h1>Mis reservas</h1>
+
+                    <p>
+                        Revisa las solicitudes de reserva realizadas
+                        desde SportFinder.
+                    </p>
+
+                </div>
+
+                <a
+                    href="buscar-canchas.html"
+                    class="button primary-button"
+                >
+                    Buscar otra cancha
+                </a>
+
+            </div>
+
+
+            <!-- Resumen -->
+            <div class="reservations-summary">
+
+                <article class="summary-card">
+
+                    <span>📅</span>
+
+                    <div>
+
+                        <strong id="reservation-count">
+                            0
+                        </strong>
+
+                        <p>Reservas activas</p>
+
+                    </div>
+
+                </article>
+
+                <article class="summary-card">
+
+                    <span>⏳</span>
+
+                    <div>
+
+                        <strong id="pending-count">
+                            0
+                        </strong>
+
+                        <p>Pendientes</p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Lista de reservas -->
+            <section
+                class="reservations-list"
+                id="reservations-list"
+            ></section>
+
+
+            <!-- Mensaje cuando no existen reservas -->
+            <section
+                class="empty-reservations"
+                id="empty-reservations"
+                hidden
+            >
+
+                <span class="empty-reservations-icon">
+                    📅
+                </span>
+
+                <h2>Aún no tienes reservas</h2>
+
+                <p>
+                    Busca una cancha y realiza tu primera solicitud
+                    de reserva.
+                </p>
+
+                <a
+                    href="buscar-canchas.html"
+                    class="button primary-button"
+                >
+                    Buscar canchas
+                </a>
+
+            </section>
+
+        </section>
+<!-- Modal para cancelar reserva -->
+<div
+    class="cancel-modal"
+    id="cancel-modal"
+    hidden
+>
+
+    <div class="cancel-modal-overlay"></div>
+
+    <div class="cancel-modal-card">
+
+        <button
+            type="button"
+            class="cancel-modal-close"
+            id="cancel-modal-close"
+        >
+            ×
+        </button>
+
+        <div class="cancel-modal-icon">
+            ⚠️
+        </div>
+
+        <h2>¿Cancelar reserva?</h2>
+
+        <p>
+            ¿Estás seguro de que deseas cancelar
+            esta reserva?
+        </p>
+
+        <div class="cancel-modal-actions">
+
+            <button
+                type="button"
+                class="keep-reservation-button"
+                id="keep-reservation-button"
+            >
+                No, mantener
+            </button>
+
+            <button
+                type="button"
+                class="confirm-cancel-button"
+                id="confirm-cancel-button"
+            >
+                Sí, cancelar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </main>
+
+
+    <!-- Pie de página -->
+    <footer class="footer" id="contacto">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+
+                <h3>SportFinder</h3>
+
+                <p>Encuentra. Reserva. Juega.</p>
+
+                <p>
+                    Una plataforma diseñada para facilitar
+                    el acceso a espacios deportivos.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h4>Enlaces</h4>
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="buscar-canchas.html">
+                    Buscar canchas
+                </a>
+
+                <a href="buscar-equipo.html">
+                    Buscar equipo
+                </a>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h4>Contacto</h4>
+
+                <p>Lima, Perú</p>
+
+                <p>sportfinder@gmail.com</p>
+
+                <p>Proyecto Crea y Emprende 2026</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SportFinder. Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+   <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================
+       USUARIO
+    ========================= */
+
+    const savedUser =
+        localStorage.getItem("sportfinderUser");
+
+    if (!savedUser) {
+
+        window.location.href = "login.html";
+        return;
+
+    }
+
+    let user;
+
+    try {
+
+        user = JSON.parse(savedUser);
+
+    } catch (error) {
+
+        localStorage.removeItem("sportfinderUser");
+
+        window.location.href = "login.html";
+        return;
+
+    }
+
+
+    /* =========================
+       ELEMENTOS
+    ========================= */
+
+    const reservationsList =
+        document.getElementById("reservations-list");
+
+    const emptyReservations =
+        document.getElementById("empty-reservations");
+
+    const reservationCount =
+        document.getElementById("reservation-count");
+
+    const pendingCount =
+        document.getElementById("pending-count");
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    const cancelModal =
+        document.getElementById("cancel-modal");
+
+    const cancelModalClose =
+        document.getElementById("cancel-modal-close");
+
+    const keepReservationButton =
+        document.getElementById(
+            "keep-reservation-button"
+        );
+
+    const confirmCancelButton =
+        document.getElementById(
+            "confirm-cancel-button"
+        );
+
+    const cancelModalOverlay =
+        cancelModal
+            ? cancelModal.querySelector(
+                ".cancel-modal-overlay"
+            )
+            : null;
+
+
+    let reservationToCancel = null;
+
+
+    /* =========================
+       LEER RESERVAS
+    ========================= */
+
+    function getReservations() {
+
+        try {
+
+            const savedReservations =
+                localStorage.getItem(
+                    "sportfinderReservations"
+                );
+
+            if (!savedReservations) {
+
+                return [];
+
+            }
+
+            const reservations =
+                JSON.parse(savedReservations);
+
+            return Array.isArray(reservations)
+                ? reservations
+                : [];
+
+        } catch (error) {
+
+            console.error(
+                "Error leyendo reservas:",
+                error
+            );
+
+            return [];
+
+        }
+
+    }
+
+
+    /* =========================
+       RESERVAS DEL USUARIO
+    ========================= */
+
+    function getUserReservations() {
+
+        const reservations =
+            getReservations();
+
+
+        /*
+        Aceptamos distintas formas de guardar
+        el correo para no perder las reservas
+        que ya hayas creado.
+        */
+
+        return reservations.filter(
+            function (reservation) {
+
+                const reservationEmail =
+                    reservation.userEmail ||
+                    reservation.email ||
+                    reservation.user?.email ||
+                    reservation.user?.userEmail;
+
+
+                /*
+                Si la reserva antigua no tiene
+                correo guardado, también se muestra.
+                */
+
+                if (!reservationEmail) {
+
+                    return true;
+
+                }
+
+
+                return (
+                    reservationEmail
+                        .toLowerCase() ===
+                    user.email.toLowerCase()
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       OBTENER DATOS
+       COMPATIBILIDAD
+    ========================= */
+
+    function getCourtName(reservation) {
+
+        return (
+            reservation.court ||
+            reservation.courtName ||
+            reservation.cancha ||
+            reservation.name ||
+            reservation.nombre ||
+            "Cancha deportiva"
+        );
+
+    }
+
+
+    function getSport(reservation) {
+
+        return (
+            reservation.sport ||
+            reservation.deporte ||
+            "Fútbol"
+        );
+
+    }
+
+
+    function getDate(reservation) {
+
+        return (
+            reservation.date ||
+            reservation.fecha ||
+            "Fecha no especificada"
+        );
+
+    }
+
+
+    function getTime(reservation) {
+
+        return (
+            reservation.time ||
+            reservation.hour ||
+            reservation.hora ||
+            reservation.schedule ||
+            reservation.horario ||
+            "Horario no especificado"
+        );
+
+    }
+
+
+    function getPrice(reservation) {
+
+        return (
+            reservation.price ||
+            reservation.precio ||
+            reservation.total ||
+            "Por confirmar"
+        );
+
+    }
+
+
+    function getLocation(reservation) {
+
+        return (
+            reservation.location ||
+            reservation.ubicacion ||
+            reservation.address ||
+            reservation.direccion ||
+            "Lima, Perú"
+        );
+
+    }
+
+
+    /* =========================
+       ESTADO DE RESERVA
+    ========================= */
+
+    function isCancelled(reservation) {
+
+        const status =
+            String(
+                reservation.status ||
+                reservation.estado ||
+                ""
+            ).toLowerCase();
+
+
+        return (
+            status === "cancelled" ||
+            status === "cancelada" ||
+            status === "cancelado"
+        );
+
+    }
+
+
+    /* =========================
+       MOSTRAR RESERVAS
+    ========================= */
+
+    function renderReservations() {
+
+        if (!reservationsList) {
+
+            console.error(
+                "No se encontró #reservations-list"
+            );
+
+            return;
+
+        }
+
+
+        const reservations =
+            getUserReservations();
+
+
+        reservationsList.innerHTML = "";
+
+
+        /* =========================
+           CONTADORES
+        ========================= */
+
+        const activeReservations =
+            reservations.filter(
+                function (reservation) {
+
+                    return !isCancelled(reservation);
+
+                }
+            );
+
+
+        /*
+        Por ahora las reservas activas
+        se consideran pendientes,
+        que coincide con tu diseño actual.
+        */
+
+        const pendingReservations =
+            activeReservations;
+
+
+        if (reservationCount) {
+
+            reservationCount.textContent =
+                activeReservations.length;
+
+        }
+
+
+        if (pendingCount) {
+
+            pendingCount.textContent =
+                pendingReservations.length;
+
+        }
+
+
+        /* =========================
+           SIN RESERVAS
+        ========================= */
+
+        if (reservations.length === 0) {
+
+            if (emptyReservations) {
+
+                emptyReservations.hidden = false;
+
+            }
+
+            return;
+
+        }
+
+
+        if (emptyReservations) {
+
+            emptyReservations.hidden = true;
+
+        }
+
+
+        /* =========================
+           CREAR TARJETAS
+        ========================= */
+
+        reservations.forEach(
+            function (reservation, index) {
+
+                const cancelled =
+                    isCancelled(reservation);
+
+
+                const courtName =
+                    getCourtName(reservation);
+
+                const sport =
+                    getSport(reservation);
+
+                const date =
+                    getDate(reservation);
+
+                const time =
+                    getTime(reservation);
+
+                const price =
+                    getPrice(reservation);
+
+                const location =
+                    getLocation(reservation);
+
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                card.className =
+                    "reservation-card";
+
+
+                if (cancelled) {
+
+                    card.classList.add(
+                        "reservation-cancelled"
+                    );
+
+                }
+
+
+                /* =========================
+                   PRECIO
+                ========================= */
+
+                let priceText;
+
+                if (
+                    price === "Por confirmar"
+                ) {
+
+                    priceText =
+                        "Por confirmar";
+
+                } else {
+
+                    const priceString =
+                        String(price);
+
+                    priceText =
+                        priceString.includes("S/")
+                            ? priceString
+                            : "S/ " + priceString;
+
+                }
+
+
+                /* =========================
+                   TARJETA
+                ========================= */
+
+                card.innerHTML = `
+
+                    <div class="reservation-card-content">
+
+                        <div class="reservation-card-top">
+
+                            <div>
+
+                                <span class="reservation-label">
+
+                                    ${
+                                        cancelled
+                                            ? "Reserva cancelada"
+                                            : "Solicitud de reserva"
+                                    }
+
+                                </span>
+
+                                <h2>
+                                    ${courtName}
+                                </h2>
+
+                            </div>
+
+
+                            <span
+                                class="
+                                    reservation-status
+                                    ${
+                                        cancelled
+                                            ? "cancelled"
+                                            : "pending"
+                                    }
+                                "
+                            >
+
+                                ${
+                                    cancelled
+                                        ? "Cancelada"
+                                        : "Pendiente"
+                                }
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="reservation-details">
+
+                            <div>
+
+                                <span>
+                                    Deporte
+                                </span>
+
+                                <strong>
+                                    ${sport}
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Fecha
+                                </span>
+
+                                <strong>
+                                    ${date}
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Horario
+                                </span>
+
+                                <strong>
+                                    ${time}
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    Precio
+                                </span>
+
+                                <strong>
+                                    ${priceText}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <p class="reservation-location">
+
+                            📍 ${location}
+
+                        </p>
+
+
+                        <div class="reservation-actions">
+
+                            ${
+                                !cancelled
+                                    ? `
+
+                                    <button
+                                        type="button"
+                                        class="cancel-reservation-button"
+                                        data-index="${index}"
+                                    >
+                                        Cancelar reserva
+                                    </button>
+
+                                    `
+                                    : `
+                                    
+                                    <span class="cancelled-reservation-text">
+                                        Esta reserva fue cancelada
+                                    </span>
+
+                                    `
+                            }
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                reservationsList.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /* =========================
+           BOTONES CANCELAR
+        ========================= */
+
+        const cancelButtons =
+            reservationsList.querySelectorAll(
+                ".cancel-reservation-button"
+            );
+
+
+        cancelButtons.forEach(
+            function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        const index =
+                            Number(
+                                button.dataset.index
+                            );
+
+
+                        const currentReservations =
+                            getUserReservations();
+
+
+                        const selectedReservation =
+                            currentReservations[index];
+
+
+                        if (!selectedReservation) {
+
+                            return;
+
+                        }
+
+
+                        reservationToCancel =
+                            selectedReservation;
+
+
+                        openCancelModal();
+
+                    }
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================
+       ABRIR MODAL
+    ========================= */
+
+    function openCancelModal() {
+
+        if (!cancelModal) {
+
+            console.error(
+                "No se encontró el modal de cancelación."
+            );
+
+            return;
+
+        }
+
+
+        cancelModal.hidden = false;
+
+
+        document.body.classList.add(
+            "modal-open"
+        );
+
+    }
+
+
+    /* =========================
+       CERRAR MODAL
+    ========================= */
+
+    function closeCancelModal() {
+
+        if (!cancelModal) {
+
+            return;
+
+        }
+
+
+        cancelModal.hidden = true;
+
+
+        reservationToCancel = null;
+
+
+        document.body.classList.remove(
+            "modal-open"
+        );
+
+    }
+
+
+    /* =========================
+       CONFIRMAR CANCELACIÓN
+    ========================= */
+
+    function confirmCancellation() {
+
+        if (!reservationToCancel) {
+
+            return;
+
+        }
+
+
+        const reservations =
+            getReservations();
+
+
+        const reservationIndex =
+            reservations.findIndex(
+                function (reservation) {
+
+                    /*
+                    Primero intentamos localizarla
+                    por ID.
+                    */
+
+                    if (
+                        reservation.id !== undefined &&
+                        reservationToCancel.id !== undefined
+                    ) {
+
+                        return (
+                            String(reservation.id) ===
+                            String(reservationToCancel.id)
+                        );
+
+                    }
+
+
+                    /*
+                    Si las reservas antiguas no
+                    tienen ID, comparamos sus datos.
+                    */
+
+                    return (
+
+                        getCourtName(reservation) ===
+                        getCourtName(reservationToCancel)
+
+                        &&
+
+                        getDate(reservation) ===
+                        getDate(reservationToCancel)
+
+                        &&
+
+                        getTime(reservation) ===
+                        getTime(reservationToCancel)
+
+                    );
+
+                }
+            );
+
+
+        if (reservationIndex === -1) {
+
+            console.error(
+                "No se encontró la reserva."
+            );
+
+            closeCancelModal();
+
+            return;
+
+        }
+
+
+        /*
+        No eliminamos la reserva.
+        Cambiamos su estado para mantener
+        un historial.
+        */
+
+        reservations[
+            reservationIndex
+        ].status = "cancelled";
+
+
+        localStorage.setItem(
+            "sportfinderReservations",
+            JSON.stringify(reservations)
+        );
+
+
+        closeCancelModal();
+
+
+        renderReservations();
+
+    }
+
+
+    /* =========================
+       EVENTOS DEL MODAL
+    ========================= */
+
+    if (cancelModalClose) {
+
+        cancelModalClose.addEventListener(
+            "click",
+            closeCancelModal
+        );
+
+    }
+
+
+    if (keepReservationButton) {
+
+        keepReservationButton.addEventListener(
+            "click",
+            closeCancelModal
+        );
+
+    }
+
+
+    if (cancelModalOverlay) {
+
+        cancelModalOverlay.addEventListener(
+            "click",
+            closeCancelModal
+        );
+
+    }
+
+
+    if (confirmCancelButton) {
+
+        confirmCancelButton.addEventListener(
+            "click",
+            confirmCancellation
+        );
+
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                cancelModal &&
+                !cancelModal.hidden
+            ) {
+
+                closeCancelModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       INICIAR
+    ========================= */
+
+    renderReservations();
+
+});
+
+</script>
+
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

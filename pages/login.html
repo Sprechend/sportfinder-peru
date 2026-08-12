@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Iniciar sesión | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="../index.html">
+
+                <img
+                    src="../img/logo.jpg"
+                    alt="Logo de SportFinder"
+                    class="logo-image"
+                >
+
+                <span>SportFinder</span>
+
+            </a>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+            <a href="../index.html#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a
+                href="login.html"
+                class="login-link"
+            >
+                Iniciar sesión
+            </a>
+
+            <a
+                href="registro.html"
+                class="register-button"
+            >
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="auth-page">
+
+        <section class="auth-card">
+
+            <div class="auth-header">
+
+                <span>
+                    Bienvenido nuevamente
+                </span>
+
+                <h1>
+                    Iniciar sesión
+                </h1>
+
+                <p>
+                    Ingresa a tu cuenta para acceder
+                    a todas las funciones de SportFinder.
+                </p>
+
+            </div>
+
+
+            <form
+                id="login-form"
+                class="auth-form"
+            >
+
+                <div class="form-group">
+
+                    <label for="login-email">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="login-password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Escribe tu contraseña"
+                        minlength="6"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-button auth-button"
+                >
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+
+            <p
+                id="login-error"
+                class="form-message error-message"
+                hidden
+            >
+                Correo o contraseña incorrectos.
+            </p>
+
+
+            <div
+                id="login-success"
+                class="success-card"
+                hidden
+            >
+
+                <span class="success-icon">
+                    ✅
+                </span>
+
+                <h2>
+                    ¡Bienvenido a SportFinder!
+                </h2>
+
+                <p>
+                    Has iniciado sesión correctamente.
+                </p>
+
+                <a
+                    href="buscar-canchas.html"
+                    class="primary-button"
+                >
+                    Buscar una cancha
+                </a>
+
+            </div>
+
+
+            <p class="auth-footer">
+
+                ¿No tienes una cuenta?
+
+                <a href="registro.html">
+                    Regístrate
+                </a>
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const loginForm =
+            document.getElementById("login-form");
+
+        const emailInput =
+            document.getElementById("login-email");
+
+        const passwordInput =
+            document.getElementById("login-password");
+
+        const loginError =
+            document.getElementById("login-error");
+
+        const loginSuccess =
+            document.getElementById("login-success");
+
+
+        loginForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                loginError.hidden = true;
+
+
+                const savedAccount =
+                    localStorage.getItem(
+                        "sportfinderAccount"
+                    );
+
+
+                if (!savedAccount) {
+
+                    loginError.textContent =
+                        "❌ No existe una cuenta registrada. Primero debes registrarte.";
+
+                    loginError.hidden = false;
+
+                    return;
+                }
+
+
+                let account;
+
+
+                try {
+
+                    account =
+                        JSON.parse(savedAccount);
+
+                } catch (error) {
+
+                    localStorage.removeItem(
+                        "sportfinderAccount"
+                    );
+
+                    loginError.textContent =
+                        "❌ Los datos de la cuenta están dañados. Regístrate nuevamente.";
+
+                    loginError.hidden = false;
+
+                    return;
+                }
+
+
+                const enteredEmail =
+                    emailInput.value
+                        .trim()
+                        .toLowerCase();
+
+                const enteredPassword =
+                    passwordInput.value;
+
+
+                if (
+                    enteredEmail !== account.email ||
+                    enteredPassword !== account.password
+                ) {
+
+                    loginError.textContent =
+                        "❌ Correo o contraseña incorrectos.";
+
+                    loginError.hidden = false;
+
+                    return;
+                }
+
+
+                try {
+
+                    localStorage.setItem(
+                        "sportfinderUser",
+                        JSON.stringify(account)
+                    );
+
+
+                    loginForm.hidden = true;
+
+                    loginSuccess.hidden = false;
+
+
+                    setTimeout(function () {
+
+                        window.location.href =
+                            "buscar-canchas.html";
+
+                    }, 1200);
+
+
+                } catch (error) {
+
+                    loginError.textContent =
+                        "❌ No se pudo iniciar sesión.";
+
+                    loginError.hidden = false;
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

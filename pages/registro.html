@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Registrarse | SportFinder</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="../index.html">
+
+                <img
+                    src="../img/logo.jpg"
+                    alt="Logo de SportFinder"
+                    class="logo-image"
+                >
+
+                <span>SportFinder</span>
+
+            </a>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+            <a href="../index.html#como-funciona">
+                ¿Cómo funciona?
+            </a>
+
+            <a href="../index.html#contacto">
+                Contacto
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a
+                href="login.html"
+                class="login-link"
+            >
+                Iniciar sesión
+            </a>
+
+            <a
+                href="registro.html"
+                class="register-button"
+            >
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="auth-page">
+
+        <section class="auth-card">
+
+            <div class="auth-header">
+
+                <span>
+                    Únete a SportFinder
+                </span>
+
+                <h1>
+                    Crear una cuenta
+                </h1>
+
+                <p>
+                    Regístrate para buscar canchas,
+                    encontrar equipos y realizar reservas.
+                </p>
+
+            </div>
+
+
+            <form
+                id="register-form"
+                class="auth-form"
+            >
+
+                <div class="form-group">
+
+                    <label for="register-name">
+                        Nombre completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="register-name"
+                        placeholder="Escribe tu nombre"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-email">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="register-email"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-password">
+                        Contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="register-password"
+                        placeholder="Mínimo 6 caracteres"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-confirm-password">
+                        Confirmar contraseña
+                    </label>
+
+                    <input
+                        type="password"
+                        id="register-confirm-password"
+                        placeholder="Repite tu contraseña"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-button auth-button"
+                >
+                    Crear cuenta
+                </button>
+
+            </form>
+
+
+            <p
+                id="register-error"
+                class="form-message error-message"
+                hidden
+            >
+                No se pudo crear la cuenta.
+            </p>
+
+
+            <div
+                id="register-success"
+                class="success-card"
+                hidden
+            >
+
+                <span class="success-icon">
+                    ✅
+                </span>
+
+                <h2>
+                    Cuenta creada correctamente
+                </h2>
+
+                <p>
+                    Tu registro en SportFinder se realizó
+                    con éxito.
+                </p>
+
+                <a
+                    href="buscar-canchas.html"
+                    class="primary-button"
+                >
+                    Buscar una cancha
+                </a>
+
+            </div>
+
+
+            <p class="auth-footer">
+
+                ¿Ya tienes una cuenta?
+
+                <a href="login.html">
+                    Inicia sesión
+                </a>
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const registerForm =
+            document.getElementById("register-form");
+
+        const nameInput =
+            document.getElementById("register-name");
+
+        const emailInput =
+            document.getElementById("register-email");
+
+        const passwordInput =
+            document.getElementById("register-password");
+
+        const confirmPasswordInput =
+            document.getElementById(
+                "register-confirm-password"
+            );
+
+        const registerError =
+            document.getElementById("register-error");
+
+        const registerSuccess =
+            document.getElementById("register-success");
+
+
+        registerForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                registerError.hidden = true;
+
+                const name =
+                    nameInput.value.trim();
+
+                const email =
+                    emailInput.value
+                        .trim()
+                        .toLowerCase();
+
+                const password =
+                    passwordInput.value;
+
+                const confirmPassword =
+                    confirmPasswordInput.value;
+
+
+                if (name.length < 2) {
+
+                    registerError.textContent =
+                        "❌ Escribe un nombre válido.";
+
+                    registerError.hidden = false;
+
+                    return;
+                }
+
+
+                if (password.length < 6) {
+
+                    registerError.textContent =
+                        "❌ La contraseña debe tener como mínimo 6 caracteres.";
+
+                    registerError.hidden = false;
+
+                    return;
+                }
+
+
+                if (password !== confirmPassword) {
+
+                    registerError.textContent =
+                        "❌ Las contraseñas no coinciden.";
+
+                    registerError.hidden = false;
+
+                    return;
+                }
+
+
+                const user = {
+
+                    name: name,
+
+                    email: email,
+
+                    password: password
+
+                };
+
+
+                try {
+
+                    /*
+                    sportfinderAccount:
+                    guarda los datos de la cuenta.
+                    */
+
+                    localStorage.setItem(
+                        "sportfinderAccount",
+                        JSON.stringify(user)
+                    );
+
+
+                    /*
+                    sportfinderUser:
+                    indica que la sesión está iniciada.
+                    */
+
+                    localStorage.setItem(
+                        "sportfinderUser",
+                        JSON.stringify(user)
+                    );
+
+
+                    registerForm.hidden = true;
+
+                    registerSuccess.hidden = false;
+
+
+                    setTimeout(function () {
+
+                        window.location.href =
+                            "buscar-canchas.html";
+
+                    }, 1500);
+
+
+                } catch (error) {
+
+                    registerError.textContent =
+                        "❌ No se pudo guardar la cuenta.";
+
+                    registerError.hidden = false;
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+    <script src="../js/auth.js"></script>
+
+</body>
+
+</html>

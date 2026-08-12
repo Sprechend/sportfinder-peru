@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mi perfil | SportFinder</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+    <a href="../index.html">
+
+        <img
+            src="../img/logo.jpg"
+            alt="SportFinder Logo"
+            class="logo-image"
+        >
+
+        <span>SportFinder</span>
+
+    </a>
+
+        </div>
+
+        <div class="menu">
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="buscar-canchas.html">
+                Buscar canchas
+            </a>
+
+            <a href="buscar-equipo.html">
+                Buscar equipo
+            </a>
+
+        </div>
+
+        <div class="nav-buttons">
+
+            <a
+                href="login.html"
+                class="login-link"
+            >
+                Iniciar sesión
+            </a>
+
+            <a
+                href="registro.html"
+                class="register-button"
+            >
+                Registrarse
+            </a>
+
+        </div>
+
+    </nav>
+
+    <main class="profile-page">
+
+        <section class="profile-card">
+
+            <div
+                class="profile-avatar"
+                id="profile-avatar"
+            >
+                U
+            </div>
+
+            <h1>Mi perfil</h1>
+
+            <p class="profile-description">
+                Revisa la información de tu cuenta.
+            </p>
+
+            <div class="profile-data">
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Nombre completo
+                    </span>
+
+                    <strong id="profile-name">
+                        Usuario
+                    </strong>
+
+                </div>
+
+                <div class="profile-field">
+
+                    <span class="profile-label">
+                        Correo electrónico
+                    </span>
+
+                    <strong id="profile-email">
+                        usuario@correo.com
+                    </strong>
+                    <div class="profile-field">
+
+    <span class="profile-label">
+        Número de celular
+    </span>
+
+    <strong id="profile-phone">
+        No agregado
+    </strong>
+
+</div>
+
+
+<div class="profile-field">
+
+    <span class="profile-label">
+        Distrito
+    </span>
+
+    <strong id="profile-district">
+        No agregado
+    </strong>
+
+</div>
+
+
+<div class="profile-field">
+
+    <span class="profile-label">
+        Deporte favorito
+    </span>
+
+    <strong id="profile-sport">
+        No agregado
+    </strong>
+
+</div>
+                </div>
+
+            </div>
+
+            <button
+    type="button"
+    class="button primary-button"
+    id="edit-profile-button"
+>
+    Editar perfil
+</button>
+<div
+    class="profile-modal"
+    id="profile-modal"
+    hidden
+>
+
+    <div class="profile-modal-overlay"></div>
+
+    <div class="profile-modal-card">
+
+        <button
+            type="button"
+            class="profile-modal-close"
+            id="profile-modal-close"
+            aria-label="Cerrar"
+        >
+            ×
+        </button>
+
+
+        <div
+            class="profile-modal-avatar"
+            id="profile-modal-avatar"
+        >
+            U
+        </div>
+
+
+        <h2>Editar perfil</h2>
+
+        <p>
+            Completa tu información para personalizar
+            tu experiencia en SportFinder.
+        </p>
+
+
+        <div class="form-group">
+
+            <label for="edit-profile-name">
+                Nombre completo
+            </label>
+
+            <input
+                type="text"
+                id="edit-profile-name"
+                placeholder="Tu nombre"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="edit-profile-email">
+                Correo electrónico
+            </label>
+
+            <input
+                type="email"
+                id="edit-profile-email"
+                disabled
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="edit-profile-phone">
+                Número de celular
+            </label>
+
+            <input
+                type="tel"
+                id="edit-profile-phone"
+                placeholder="Ejemplo: 987654321"
+                maxlength="9"
+                inputmode="numeric"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="edit-profile-district">
+                Distrito
+            </label>
+
+            <select id="edit-profile-district">
+
+                <option value="">
+                    Selecciona tu distrito
+                </option>
+
+                <option value="San Martín de Porres">
+                    San Martín de Porres
+                </option>
+
+                <option value="Los Olivos">
+                    Los Olivos
+                </option>
+
+                <option value="Independencia">
+                    Independencia
+                </option>
+
+                <option value="Comas">
+                    Comas
+                </option>
+
+                <option value="Rímac">
+                    Rímac
+                </option>
+
+                <option value="Pueblo Libre">
+                    Pueblo Libre
+                </option>
+
+                <option value="San Miguel">
+                    San Miguel
+                </option>
+
+                <option value="Jesús María">
+                    Jesús María
+                </option>
+
+                <option value="Otro">
+                    Otro
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="edit-profile-sport">
+                Deporte favorito
+            </label>
+
+            <select id="edit-profile-sport">
+
+                <option value="">
+                    Selecciona un deporte
+                </option>
+
+                <option value="Fútbol">
+                    ⚽ Fútbol
+                </option>
+
+                <option value="Vóley">
+                    🏐 Vóley
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="profile-modal-actions">
+
+            <button
+                type="button"
+                class="profile-cancel-button"
+                id="profile-cancel-button"
+            >
+                Cancelar
+            </button>
+
+            <button
+                type="button"
+                class="primary-button"
+                id="profile-save-button"
+            >
+                Guardar cambios
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+            <p
+                id="profile-message"
+                class="profile-message"
+                hidden
+            ></p>
+
+        </section>
+
+    </main>
+
+    <script src="../js/auth.js"></script>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================
+       OBTENER USUARIO
+    ========================= */
+
+    const savedUser =
+        localStorage.getItem("sportfinderUser");
+
+    if (!savedUser) {
+
+        window.location.href = "login.html";
+        return;
+
+    }
+
+    let user;
+
+    try {
+
+        user = JSON.parse(savedUser);
+
+    } catch (error) {
+
+        localStorage.removeItem("sportfinderUser");
+
+        window.location.href = "login.html";
+        return;
+
+    }
+
+
+    /* =========================
+       DATOS DEL PERFIL
+    ========================= */
+
+    const profileAvatar =
+        document.getElementById("profile-avatar");
+
+    const profileName =
+        document.getElementById("profile-name");
+
+    const profileEmail =
+        document.getElementById("profile-email");
+
+    const profilePhone =
+        document.getElementById("profile-phone");
+
+    const profileDistrict =
+        document.getElementById("profile-district");
+
+    const profileSport =
+        document.getElementById("profile-sport");
+
+    const profileMessage =
+        document.getElementById("profile-message");
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    const editProfileButton =
+        document.getElementById("edit-profile-button");
+
+    const profileModal =
+        document.getElementById("profile-modal");
+
+    const modalClose =
+        document.getElementById("profile-modal-close");
+
+    const cancelButton =
+        document.getElementById("profile-cancel-button");
+
+    const saveButton =
+        document.getElementById("profile-save-button");
+
+    const modalOverlay =
+        profileModal.querySelector(
+            ".profile-modal-overlay"
+        );
+
+
+    /* =========================
+       CAMPOS DEL MODAL
+    ========================= */
+
+    const nameInput =
+        document.getElementById("edit-profile-name");
+
+    const emailInput =
+        document.getElementById("edit-profile-email");
+
+    const phoneInput =
+        document.getElementById("edit-profile-phone");
+
+    const districtInput =
+        document.getElementById("edit-profile-district");
+
+    const sportInput =
+        document.getElementById("edit-profile-sport");
+
+    const modalAvatar =
+        document.getElementById("profile-modal-avatar");
+
+
+    /* =========================
+       MOSTRAR DATOS
+    ========================= */
+
+    function renderProfile() {
+
+        profileAvatar.textContent =
+            user.name
+                .charAt(0)
+                .toUpperCase();
+
+        profileName.textContent =
+            user.name;
+
+        profileEmail.textContent =
+            user.email;
+
+        profilePhone.textContent =
+            user.phone || "No agregado";
+
+        profileDistrict.textContent =
+            user.district || "No agregado";
+
+        profileSport.textContent =
+            user.favoriteSport || "No agregado";
+
+    }
+
+
+    /* =========================
+       ABRIR MODAL
+    ========================= */
+
+    function openProfileModal() {
+
+        nameInput.value =
+            user.name || "";
+
+        emailInput.value =
+            user.email || "";
+
+        phoneInput.value =
+            user.phone || "";
+
+        districtInput.value =
+            user.district || "";
+
+        sportInput.value =
+            user.favoriteSport || "";
+
+        modalAvatar.textContent =
+            user.name
+                .charAt(0)
+                .toUpperCase();
+
+        profileModal.hidden = false;
+
+        document.body.classList.add(
+            "modal-open"
+        );
+
+        setTimeout(function () {
+
+            nameInput.focus();
+
+        }, 50);
+
+    }
+
+
+    /* =========================
+       CERRAR MODAL
+    ========================= */
+
+    function closeProfileModal() {
+
+        profileModal.hidden = true;
+
+        document.body.classList.remove(
+            "modal-open"
+        );
+
+    }
+
+
+    /* =========================
+       SOLO NÚMEROS EN CELULAR
+    ========================= */
+
+    phoneInput.addEventListener(
+        "input",
+        function () {
+
+            phoneInput.value =
+                phoneInput.value
+                    .replace(/\D/g, "")
+                    .slice(0, 9);
+
+        }
+    );
+
+
+    /* =========================
+       GUARDAR PERFIL
+    ========================= */
+
+    saveButton.addEventListener(
+        "click",
+        function () {
+
+            const newName =
+                nameInput.value.trim();
+
+            const newPhone =
+                phoneInput.value.trim();
+
+            const newDistrict =
+                districtInput.value;
+
+            const newSport =
+                sportInput.value;
+
+
+            /* Validar nombre */
+
+            if (newName.length < 2) {
+
+                profileMessage.textContent =
+                    "❌ Escribe un nombre válido.";
+
+                profileMessage.hidden = false;
+
+                return;
+
+            }
+
+
+            /* Validar celular si escribió uno */
+
+            if (
+                newPhone !== "" &&
+                !/^9\d{8}$/.test(newPhone)
+            ) {
+
+                profileMessage.textContent =
+                    "❌ Ingresa un número de celular válido de 9 dígitos.";
+
+                profileMessage.hidden = false;
+
+                return;
+
+            }
+
+
+            /* =========================
+               ACTUALIZAR USUARIO
+            ========================= */
+
+            user.name =
+                newName;
+
+            user.phone =
+                newPhone;
+
+            user.district =
+                newDistrict;
+
+            user.favoriteSport =
+                newSport;
+
+
+            /* Sesión actual */
+
+            localStorage.setItem(
+                "sportfinderUser",
+                JSON.stringify(user)
+            );
+
+
+            /*
+            Cuenta registrada.
+
+            También la actualizamos para que
+            al cerrar sesión e iniciar nuevamente
+            los cambios no desaparezcan.
+            */
+
+            const savedAccount =
+                localStorage.getItem(
+                    "sportfinderAccount"
+                );
+
+
+            if (savedAccount) {
+
+                try {
+
+                    const account =
+                        JSON.parse(savedAccount);
+
+                    account.name =
+                        user.name;
+
+                    account.phone =
+                        user.phone;
+
+                    account.district =
+                        user.district;
+
+                    account.favoriteSport =
+                        user.favoriteSport;
+
+
+                    localStorage.setItem(
+                        "sportfinderAccount",
+                        JSON.stringify(account)
+                    );
+
+                } catch (error) {
+
+                    console.error(
+                        "No se pudo actualizar la cuenta.",
+                        error
+                    );
+
+                }
+
+            }
+
+
+            /* =========================
+               ACTUALIZAR PANTALLA
+            ========================= */
+
+            renderProfile();
+
+            closeProfileModal();
+
+
+            profileMessage.textContent =
+                "✓ Perfil actualizado correctamente.";
+
+            profileMessage.hidden = false;
+
+
+            /*
+            Recargamos después de un momento
+            para actualizar también el nombre
+            de la barra superior.
+            */
+
+            setTimeout(function () {
+
+                window.location.reload();
+
+            }, 900);
+
+        }
+    );
+
+
+    /* =========================
+       BOTONES DEL MODAL
+    ========================= */
+
+    editProfileButton.addEventListener(
+        "click",
+        openProfileModal
+    );
+
+
+    modalClose.addEventListener(
+        "click",
+        closeProfileModal
+    );
+
+
+    cancelButton.addEventListener(
+        "click",
+        closeProfileModal
+    );
+
+
+    modalOverlay.addEventListener(
+        "click",
+        closeProfileModal
+    );
+
+
+    /* Cerrar con ESC */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                !profileModal.hidden
+            ) {
+
+                closeProfileModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       INICIAR
+    ========================= */
+
+    renderProfile();
+
+});
+
+</script>
+</body>
+
+</html>
