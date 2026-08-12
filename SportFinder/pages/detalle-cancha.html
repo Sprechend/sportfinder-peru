@@ -86,10 +86,11 @@
 
         <div class="gallery-main">
 
-            <img
-                src="../img/arena7.jpg"
-                alt="Vista principal de la cancha Arena 7"
-            >
+        <img
+        src="../img/arena7.jpg"
+        alt="Vista de la cancha"
+        id="court-main-image"
+        >
 
         </div>
 
@@ -124,7 +125,7 @@
                 Cancha de fútbol
             </span>
 
-            <h1>Arena 7</h1>
+            <h1 id="court-title">Arena 7</h1>
 
             <div class="court-rating">
 
@@ -134,14 +135,13 @@
 
             </div>
 
-            <p class="court-location">
-                📍 Pueblo Libre, Lima
+            <p class="court-location" id="court-location">
+             📍 Pueblo Libre, Lima
             </p>
 
-            <p class="court-type">
-                ⚽ Fútbol 7 • Césped sintético
-            </p>
-
+            <p class="court-type" id="court-type">
+    ⚽ Fútbol 7 • Césped sintético
+</p>
             <a href="#opiniones" class="secondary-button">
                 Dar una opinión
             </a>
@@ -222,7 +222,7 @@
                 Precio aproximado
             </span>
 
-            <h2>Desde S/ 60</h2>
+            <h2 id="court-price">Desde S/ 60</h2>
 
             <p>
                 El precio puede variar según el día,
@@ -705,7 +705,75 @@
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {const courts = {
+
+    "arena7": {
+        name: "Arena 7",
+        sport: "Fútbol 7",
+        type: "⚽ Fútbol 7 • Césped sintético",
+        location: "Pueblo Libre, Lima",
+        price: 60,
+        image: "../img/arena7.jpg"
+    },
+
+    "mama-ocllo": {
+        name: "Mama Ocllo",
+        sport: "Vóley",
+        type: "🏐 Cancha de vóley",
+        location: "Pueblo Libre, Lima",
+        price: 60,
+        image: "../img/mama-ocllo.jpg"
+    },
+
+    "julio-melendez": {
+        name: "Julio Meléndez",
+        sport: "Fútbol 7",
+        type: "⚽ Fútbol 7 • Césped sintético",
+        location: "San Miguel, Lima",
+        price: 65,
+        image: "../img/julio-melendez.jpg"
+    }
+
+};
+
+
+/* Saber qué cancha seleccionó el usuario */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const courtId =
+    params.get("cancha") || "arena7";
+
+const selectedCourt =
+    courts[courtId] || courts["arena7"];
+
+
+/* Mostrar los datos de la cancha */
+
+document.getElementById("court-title").textContent =
+    selectedCourt.name;
+
+document.getElementById("court-location").textContent =
+    "📍 " + selectedCourt.location;
+
+document.getElementById("court-type").textContent =
+    selectedCourt.type;
+
+document.getElementById("court-price").textContent =
+    "Desde S/ " + selectedCourt.price;
+
+document.getElementById("court-main-image").src =
+    selectedCourt.image;
+
+document.getElementById("court-main-image").alt =
+    "Vista principal de " + selectedCourt.name;
+
+
+/* Cambiar título de la pestaña */
+
+document.title =
+    selectedCourt.name + " | SportFinder";
 
             const reservationForm =
                 document.getElementById("reservation-form");
@@ -841,13 +909,13 @@
 
                 const newReservation = {
 
-                    id: Date.now(),
+    id: Date.now(),
 
-                    court: "Arena 7",
+    court: selectedCourt.name,
 
-                    sport: "Fútbol 7",
+    sport: selectedCourt.sport,
 
-                    location: "Pueblo Libre, Lima",
+    location: selectedCourt.location,
 
                     name: reservationName.value.trim(),
 
@@ -860,7 +928,7 @@
                     timeText:
                         selectedOption.textContent.trim(),
 
-                    price: 60,
+                    price: selectedCourt.price,
 
                     status: "Pendiente de confirmación"
 

@@ -22,23 +22,25 @@
 
         <div class="logo">
 
-    <a href="../index.html">
+            <a href="../index.html">
 
-        <img
-            src="../img/logo.jpg"
-            alt="SportFinder Logo"
-            class="logo-image"
-        >
+                <img
+                    src="../img/logo.jpg"
+                    alt="Logo de SportFinder"
+                    class="logo-image"
+                >
 
-        <span>SportFinder</span>
+                <span>SportFinder</span>
 
-    </a>
+            </a>
 
         </div>
 
         <div class="menu">
 
-            <a href="../index.html">Inicio</a>
+            <a href="../index.html">
+                Inicio
+            </a>
 
             <a href="buscar-canchas.html">
                 Buscar canchas
@@ -60,11 +62,17 @@
 
         <div class="nav-buttons">
 
-            <a href="login.html" class="login-link">
+            <a
+                href="login.html"
+                class="login-link"
+            >
                 Iniciar sesión
             </a>
 
-            <a href="registro.html" class="register-button">
+            <a
+                href="registro.html"
+                class="register-button"
+            >
                 Registrarse
             </a>
 
@@ -79,19 +87,26 @@
 
             <div class="auth-header">
 
-                <span>Únete a SportFinder</span>
+                <span>
+                    Únete a SportFinder
+                </span>
 
-                <h1>Crear una cuenta</h1>
+                <h1>
+                    Crear una cuenta
+                </h1>
 
                 <p>
                     Regístrate para buscar canchas,
-                    encontrar equipos y compartir opiniones.
+                    encontrar equipos y realizar reservas.
                 </p>
 
             </div>
 
 
-            <form id="register-form" class="auth-form">
+            <form
+                id="register-form"
+                class="auth-form"
+            >
 
                 <div class="form-group">
 
@@ -103,6 +118,7 @@
                         type="text"
                         id="register-name"
                         placeholder="Escribe tu nombre"
+                        autocomplete="name"
                         required
                     >
 
@@ -119,6 +135,7 @@
                         type="email"
                         id="register-email"
                         placeholder="ejemplo@correo.com"
+                        autocomplete="email"
                         required
                     >
 
@@ -136,6 +153,7 @@
                         id="register-password"
                         placeholder="Mínimo 6 caracteres"
                         minlength="6"
+                        autocomplete="new-password"
                         required
                     >
 
@@ -153,6 +171,7 @@
                         id="register-confirm-password"
                         placeholder="Repite tu contraseña"
                         minlength="6"
+                        autocomplete="new-password"
                         required
                     >
 
@@ -174,7 +193,7 @@
                 class="form-message error-message"
                 hidden
             >
-                ❌ Las contraseñas no coinciden.
+                No se pudo crear la cuenta.
             </p>
 
 
@@ -184,9 +203,13 @@
                 hidden
             >
 
-                <span class="success-icon">✅</span>
+                <span class="success-icon">
+                    ✅
+                </span>
 
-                <h2>Cuenta creada correctamente</h2>
+                <h2>
+                    Cuenta creada correctamente
+                </h2>
 
                 <p>
                     Tu registro en SportFinder se realizó
@@ -220,70 +243,150 @@
 
     <script>
 
-const registerForm =
-    document.getElementById("register-form");
+        const registerForm =
+            document.getElementById("register-form");
 
-const passwordInput =
-    document.getElementById("register-password");
+        const nameInput =
+            document.getElementById("register-name");
 
-const confirmPasswordInput =
-    document.getElementById("register-confirm-password");
+        const emailInput =
+            document.getElementById("register-email");
 
-const nameInput =
-    document.getElementById("register-name");
+        const passwordInput =
+            document.getElementById("register-password");
 
-const emailInput =
-    document.getElementById("register-email");
+        const confirmPasswordInput =
+            document.getElementById(
+                "register-confirm-password"
+            );
 
-const registerError =
-    document.getElementById("register-error");
+        const registerError =
+            document.getElementById("register-error");
 
-const registerSuccess =
-    document.getElementById("register-success");
+        const registerSuccess =
+            document.getElementById("register-success");
 
-registerForm.addEventListener("submit", function(event){
 
-    event.preventDefault();
+        registerForm.addEventListener(
+            "submit",
+            function (event) {
 
-    registerError.hidden = true;
+                event.preventDefault();
 
-    if(passwordInput.value !== confirmPasswordInput.value){
+                registerError.hidden = true;
 
-        registerError.hidden = false;
+                const name =
+                    nameInput.value.trim();
 
-        return;
+                const email =
+                    emailInput.value
+                        .trim()
+                        .toLowerCase();
 
-    }
+                const password =
+                    passwordInput.value;
 
-    const user = {
+                const confirmPassword =
+                    confirmPasswordInput.value;
 
-    name: nameInput.value.trim(),
 
-    email: emailInput.value.trim().toLowerCase(),
+                if (name.length < 2) {
 
-    password: passwordInput.value
+                    registerError.textContent =
+                        "❌ Escribe un nombre válido.";
 
-};
+                    registerError.hidden = false;
 
-    localStorage.setItem(
-    "sportfinderAccount",
-    JSON.stringify(user)
-);
+                    return;
+                }
 
-registerForm.hidden = true;
 
-registerSuccess.hidden = false;
+                if (password.length < 6) {
 
-setTimeout(function () {
+                    registerError.textContent =
+                        "❌ La contraseña debe tener como mínimo 6 caracteres.";
 
-    window.location.href = "buscar-canchas.html";
+                    registerError.hidden = false;
 
-}, 1500);
-});
+                    return;
+                }
 
-</script>
 
-<script src="../js/auth.js"></script>
+                if (password !== confirmPassword) {
+
+                    registerError.textContent =
+                        "❌ Las contraseñas no coinciden.";
+
+                    registerError.hidden = false;
+
+                    return;
+                }
+
+
+                const user = {
+
+                    name: name,
+
+                    email: email,
+
+                    password: password
+
+                };
+
+
+                try {
+
+                    /*
+                    sportfinderAccount:
+                    guarda los datos de la cuenta.
+                    */
+
+                    localStorage.setItem(
+                        "sportfinderAccount",
+                        JSON.stringify(user)
+                    );
+
+
+                    /*
+                    sportfinderUser:
+                    indica que la sesión está iniciada.
+                    */
+
+                    localStorage.setItem(
+                        "sportfinderUser",
+                        JSON.stringify(user)
+                    );
+
+
+                    registerForm.hidden = true;
+
+                    registerSuccess.hidden = false;
+
+
+                    setTimeout(function () {
+
+                        window.location.href =
+                            "buscar-canchas.html";
+
+                    }, 1500);
+
+
+                } catch (error) {
+
+                    registerError.textContent =
+                        "❌ No se pudo guardar la cuenta.";
+
+                    registerError.hidden = false;
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+    <script src="../js/auth.js"></script>
 
 </body>
 

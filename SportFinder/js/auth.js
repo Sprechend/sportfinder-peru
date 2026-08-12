@@ -1,168 +1,291 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const savedUser =
-        localStorage.getItem("sportfinderUser");
+        const savedUser =
+            localStorage.getItem(
+                "sportfinderUser"
+            );
 
-    const navButtons =
-        document.querySelector(".nav-buttons");
+        const navButtons =
+            document.querySelector(
+                ".nav-buttons"
+            );
 
-    if (!savedUser || !navButtons) {
-        return;
-    }
 
-    const user =
-        JSON.parse(savedUser);
+        /*
+        Si no hay usuario con sesión iniciada
+        o no existe la barra de botones,
+        no se modifica el menú.
+        */
 
-    const initial =
-        user.name.charAt(0).toUpperCase();
+        if (!savedUser || !navButtons) {
+            return;
+        }
 
-    // Detectar si estamos dentro de la carpeta pages
-    const isInsidePages =
-        window.location.pathname.includes("/pages/");
 
-    const pagesPath =
-        isInsidePages ? "" : "pages/";
+        let user;
 
-    const homePath =
-        isInsidePages ? "../index.html" : "index.html";
 
-    navButtons.innerHTML = `
-        <div class="account-menu">
+        try {
 
-            <button
-                type="button"
-                class="account-button"
-                id="account-button"
-                aria-label="Abrir menú de cuenta"
-            >
+            user =
+                JSON.parse(savedUser);
 
-                <span class="account-avatar">
-                    ${initial}
-                </span>
+        } catch (error) {
 
-                <span class="account-text">
+            localStorage.removeItem(
+                "sportfinderUser"
+            );
 
-                    <small>Hola,</small>
+            return;
+        }
 
-                    <strong>
-                        ${user.name}
-                    </strong>
 
-                </span>
+        /*
+        Se comprueba que el usuario tenga
+        nombre y correo antes de mostrarlo.
+        */
 
-                <span class="account-arrow">
-                    ▼
-                </span>
+        if (
+            !user ||
+            !user.name ||
+            !user.email
+        ) {
 
-            </button>
+            localStorage.removeItem(
+                "sportfinderUser"
+            );
 
-            <div
-                class="account-dropdown"
-                id="account-dropdown"
-            >
+            return;
+        }
 
-                <div class="dropdown-header">
 
-                    <span class="dropdown-avatar">
+        const initial =
+            user.name
+                .charAt(0)
+                .toUpperCase();
+
+
+        /*
+        Detecta si la página actual se
+        encuentra dentro de la carpeta pages.
+        */
+
+        const isInsidePages =
+            window.location.pathname
+                .includes("/pages/");
+
+
+        const pagesPath =
+            isInsidePages
+                ? ""
+                : "pages/";
+
+
+        const homePath =
+            isInsidePages
+                ? "../index.html"
+                : "index.html";
+
+
+        navButtons.innerHTML = `
+
+            <div class="account-menu">
+
+                <button
+                    type="button"
+                    class="account-button"
+                    id="account-button"
+                    aria-label="Abrir menú de cuenta"
+                >
+
+                    <span class="account-avatar">
                         ${initial}
                     </span>
 
-                    <div>
+                    <span class="account-text">
+
+                        <small>
+                            Hola,
+                        </small>
 
                         <strong>
                             ${user.name}
                         </strong>
 
-                        <p>
-                            ${user.email}
-                        </p>
+                    </span>
 
-                    </div>
-
-                </div>
-
-                <div class="dropdown-divider"></div>
-
-                <a
-                    href="${pagesPath}mi-perfil.html"
-                    class="dropdown-item"
-                >
-
-                    <span>👤</span>
-
-                    Mi perfil
-
-                </a>
-
-                <a
-                    href="${pagesPath}mis-reservas.html"
-                    class="dropdown-item"
-                >
-
-                    <span>📅</span>
-
-                    Mis reservas
-
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <button
-                    type="button"
-                    class="dropdown-item logout-item"
-                    id="logout-button"
-                >
-
-                    <span>🚪</span>
-
-                    Cerrar sesión
+                    <span class="account-arrow">
+                        ▼
+                    </span>
 
                 </button>
 
+
+                <div
+                    class="account-dropdown"
+                    id="account-dropdown"
+                >
+
+                    <div class="dropdown-header">
+
+                        <span class="dropdown-avatar">
+                            ${initial}
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                ${user.name}
+                            </strong>
+
+                            <p>
+                                ${user.email}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dropdown-divider"></div>
+
+
+                    <a
+                        href="${pagesPath}mi-perfil.html"
+                        class="dropdown-item"
+                    >
+
+                        <span>👤</span>
+
+                        Mi perfil
+
+                    </a>
+
+
+                    <a
+                        href="${pagesPath}mis-reservas.html"
+                        class="dropdown-item"
+                    >
+
+                        <span>📅</span>
+
+                        Mis reservas
+
+                    </a>
+
+
+                    <div class="dropdown-divider"></div>
+
+
+                    <button
+                        type="button"
+                        class="dropdown-item logout-item"
+                        id="logout-button"
+                    >
+
+                        <span>🚪</span>
+
+                        Cerrar sesión
+
+                    </button>
+
+                </div>
+
             </div>
 
-        </div>
-    `;
+        `;
 
-    const accountButton =
-        document.getElementById("account-button");
 
-    const accountDropdown =
-        document.getElementById("account-dropdown");
+        const accountButton =
+            document.getElementById(
+                "account-button"
+            );
 
-    const logoutButton =
-        document.getElementById("logout-button");
+        const accountDropdown =
+            document.getElementById(
+                "account-dropdown"
+            );
 
-    accountButton.addEventListener("click", function (event) {
+        const logoutButton =
+            document.getElementById(
+                "logout-button"
+            );
 
-        event.stopPropagation();
 
-        accountDropdown.classList.toggle("show");
+        if (
+            !accountButton ||
+            !accountDropdown ||
+            !logoutButton
+        ) {
+            return;
+        }
 
-        accountButton.classList.toggle("active");
 
-    });
+        accountButton.addEventListener(
+            "click",
+            function (event) {
 
-    accountDropdown.addEventListener("click", function (event) {
+                event.stopPropagation();
 
-        event.stopPropagation();
+                accountDropdown
+                    .classList
+                    .toggle("show");
 
-    });
+                accountButton
+                    .classList
+                    .toggle("active");
 
-    document.addEventListener("click", function () {
+            }
+        );
 
-        accountDropdown.classList.remove("show");
 
-        accountButton.classList.remove("active");
+        accountDropdown.addEventListener(
+            "click",
+            function (event) {
 
-    });
+                event.stopPropagation();
 
-    logoutButton.addEventListener("click", function () {
+            }
+        );
 
-        localStorage.removeItem("sportfinderUser");
 
-        window.location.href = homePath;
+        document.addEventListener(
+            "click",
+            function () {
 
-    });
+                accountDropdown
+                    .classList
+                    .remove("show");
 
-});
+                accountButton
+                    .classList
+                    .remove("active");
+
+            }
+        );
+
+
+        logoutButton.addEventListener(
+            "click",
+            function () {
+
+                /*
+                Solo se borra la sesión.
+                La cuenta permanece guardada
+                para volver a iniciar sesión.
+                */
+
+                localStorage.removeItem(
+                    "sportfinderUser"
+                );
+
+                window.location.href =
+                    homePath;
+
+            }
+        );
+
+    }
+);

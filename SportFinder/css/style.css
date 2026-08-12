@@ -2228,36 +2228,384 @@ img{
 }
 
 
-/* BOTÓN UNIRSE */
+/* ==================================================
+   BUSCAR EQUIPO - ACCIONES Y MODAL
+================================================== */
 
-.join-team-button{
-    width:100%;
-    padding:13px 20px;
+/* Acciones de las tarjetas */
 
-    background:#111;
-    color:white;
-
-    border:none;
-    border-radius:9px;
-
-    font-family:inherit;
-    font-size:15px;
-    font-weight:bold;
-
-    cursor:pointer;
-    transition:0.3s;
+.team-card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
 }
 
-.join-team-button:hover:not(:disabled){
-    background:#E53935;
-    transform:translateY(-2px);
+.team-card-actions button {
+    flex: 1;
+    min-height: 46px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
-.join-team-button:disabled{
-    background:#dddddd;
-    color:#777;
+.team-card-actions button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
 
-    cursor:not-allowed;
+.team-card-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+
+/* Botón unirse */
+
+.join-team-button {
+    width: 100%;
+    border: none;
+    background: #0b63ce;
+    color: #ffffff;
+}
+
+.join-team-button:hover:not(:disabled) {
+    background: #0957b7;
+    box-shadow: 0 6px 18px rgba(11, 99, 206, 0.2);
+}
+
+
+/* Contactar / ver publicación */
+
+.team-contact-button {
+    border: 1px solid #0b63ce;
+    background: #ffffff;
+    color: #0b63ce;
+}
+
+.team-contact-button:hover {
+    background: #f2f7ff;
+}
+
+
+/* Salir del equipo */
+
+.team-leave-button {
+    border: 1px solid #d97706;
+    background: #ffffff;
+    color: #b45309;
+}
+
+.team-leave-button:hover {
+    background: #fff7ed;
+}
+
+
+/* Eliminar publicación */
+
+.team-delete-button {
+    border: 1px solid #dc2626;
+    background: #ffffff;
+    color: #dc2626;
+}
+
+.team-delete-button:hover {
+    background: #fef2f2;
+}
+
+
+/* ==================================================
+   MODAL
+================================================== */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.team-action-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+}
+
+.team-action-modal[hidden] {
+    display: none;
+}
+
+
+/* Fondo oscuro */
+
+.team-action-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.62);
+    backdrop-filter: blur(3px);
+}
+
+
+/* Tarjeta */
+
+.team-action-card {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 440px;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 24px 60px
+        rgba(15, 23, 42, 0.25);
+
+    text-align: center;
+
+    animation:
+        teamModalAppear
+        0.22s ease;
+}
+
+
+/* Animación */
+
+@keyframes teamModalAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* Cerrar */
+
+.team-action-close {
+    position: absolute;
+
+    top: 14px;
+    right: 16px;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.team-action-close:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+
+/* Icono */
+
+.team-action-icon {
+    width: 68px;
+    height: 68px;
+
+    margin:
+        0 auto
+        18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: #eff6ff;
+
+    font-size: 2rem;
+}
+
+
+/* Texto */
+
+.team-action-card h2 {
+    margin:
+        0
+        0
+        10px;
+
+    color: #0f172a;
+
+    font-size: 1.45rem;
+}
+
+.team-action-card > p {
+    margin:
+        0 auto
+        22px;
+
+    max-width: 350px;
+
+    color: #64748b;
+
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   CONTACTO
+================================================== */
+
+.team-contact-info {
+    margin-bottom: 22px;
+
+    padding: 16px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+    text-align: left;
+}
+
+.team-contact-info[hidden] {
+    display: none;
+}
+
+.team-contact-info p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 0.92rem;
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+.team-contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+}
+
+.team-contact-row span {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.team-contact-row strong {
+    color: #0f172a;
+    font-size: 1rem;
+}
+
+
+/* ==================================================
+   BOTONES DEL MODAL
+================================================== */
+
+.team-action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.team-action-buttons button {
+    flex: 1;
+
+    min-height: 46px;
+
+    padding: 12px 16px;
+
+    border-radius: 10px;
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.team-secondary-button {
+    border: 1px solid #cbd5e1;
+
+    background: #ffffff;
+
+    color: #475569;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.team-secondary-button:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+
+/* ==================================================
+   PEQUEÑOS AJUSTES DE TARJETA
+================================================== */
+
+.team-published-today {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 8px;
+
+    border-radius: 999px;
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.team-card-labels {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
 }
 
 
@@ -2456,8 +2804,343 @@ img{
     filter:drop-shadow(0 24px 30px rgba(0,0,0,0.25));
 
 }
+/* =========================
+   MODAL EDITAR PERFIL
+========================= */
 
+.profile-modal[hidden] {
+    display: none;
+}
 
+.profile-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.profile-modal-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+}
+
+.profile-modal-card {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 440px;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    padding: 36px;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.30);
+
+    animation: profileModalIn 0.25s ease;
+}
+
+.profile-modal-close {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f4f4f4;
+    color: #222;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.profile-modal-close:hover {
+    background: #e5e5e5;
+}
+
+.profile-modal-avatar {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #d71920;
+    color: white;
+
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.profile-modal-card h2 {
+    margin: 0 0 8px;
+
+    text-align: center;
+
+    font-size: 27px;
+
+    color: #111;
+}
+
+.profile-modal-card > p {
+    margin: 0 auto 25px;
+
+    max-width: 330px;
+
+    text-align: center;
+
+    color: #666;
+
+    line-height: 1.5;
+}
+
+.profile-modal-card .form-group {
+    text-align: left;
+}
+
+.profile-modal-card input {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.profile-modal-card input:focus {
+    border-color: #d71920;
+
+    box-shadow: 0 0 0 3px rgba(215, 25, 32, 0.10);
+}
+
+.profile-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 26px;
+}
+
+.profile-cancel-button {
+    padding: 12px 20px;
+
+    border: 1px solid #ddd;
+    border-radius: 9px;
+
+    background: white;
+    color: #333;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.profile-cancel-button:hover {
+    background: #f5f5f5;
+}
+
+.modal-open {
+    overflow: hidden;
+}
+
+@keyframes profileModalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+/* =========================
+   MODAL CANCELAR RESERVA
+========================= */
+
+.cancel-modal[hidden] {
+    display: none;
+}
+
+.cancel-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.cancel-modal-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+}
+
+.cancel-modal-card {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 36px;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.30);
+
+    animation: cancelModalIn 0.25s ease;
+}
+
+.cancel-modal-close {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f4f4f4;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.cancel-modal-icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #fff1f1;
+
+    font-size: 30px;
+}
+
+.cancel-modal-card h2 {
+    margin-bottom: 10px;
+
+    font-size: 26px;
+
+    color: #111;
+}
+
+.cancel-modal-card > p {
+    color: #666;
+
+    line-height: 1.5;
+}
+
+.cancel-modal-actions {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+.keep-reservation-button,
+.confirm-cancel-button {
+    flex: 1;
+
+    padding: 13px 18px;
+
+    border-radius: 9px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.keep-reservation-button {
+    border: 1px solid #ddd;
+
+    background: white;
+
+    color: #333;
+}
+
+.confirm-cancel-button {
+    border: none;
+
+    background: #d71920;
+
+    color: white;
+}
+
+.confirm-cancel-button:hover {
+    background: #b9141a;
+}
+
+@keyframes cancelModalIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
 /* =========================
    RESPONSIVE
 ========================= */
@@ -2531,7 +3214,109 @@ img{
     .footer-content{
         grid-template-columns:1fr;
     }
+/* ==================================================
+   BUSCAR EQUIPO - CELULAR
+================================================== */
 
+.team-card-actions {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.team-card-actions button {
+    width: 100%;
+    min-height: 44px;
+}
+
+
+/* Modal */
+
+.team-action-modal {
+    padding: 16px;
+}
+
+.team-action-card {
+    max-width: 100%;
+    padding: 28px 20px 22px;
+    border-radius: 16px;
+}
+
+.team-action-icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 14px;
+    font-size: 1.7rem;
+}
+
+.team-action-card h2 {
+    font-size: 1.25rem;
+}
+
+.team-action-card > p {
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+}
+
+
+/* Botones del modal */
+
+.team-action-buttons {
+    flex-direction: column-reverse;
+    gap: 9px;
+}
+
+.team-action-buttons button {
+    width: 100%;
+}
+
+
+/* Contacto */
+
+.team-contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+
+/* Etiquetas */
+
+.team-card-labels {
+    gap: 5px;
+}
+
+.team-published-today {
+    font-size: 0.68rem;
+}
+
+
+/* Formulario crear equipo */
+
+.team-form-grid {
+    grid-template-columns: 1fr;
+}
+
+
+/* Cabecera del equipo */
+
+.team-card-top {
+    gap: 12px;
+}
+
+.team-vacancies {
+    min-width: 65px;
+}
+
+
+/* Creador */
+
+.team-creator {
+    align-items: center;
+}
+
+.team-creator-avatar {
+    flex-shrink: 0;
+}
 }
 
 @media (max-width:480px){
@@ -2808,5 +3593,53 @@ img{
     .sprinty-image{
         max-width:260px;
     }
+/* =========================
+   RESPONSIVE - EDITAR PERFIL
+========================= */
 
+@media (max-width: 480px) {
+
+    .profile-modal {
+        padding: 15px;
+    }
+
+    .profile-modal-card {
+        padding: 32px 20px 24px;
+        border-radius: 18px;
+    }
+
+    .profile-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .profile-modal-actions button {
+        width: 100%;
+    }
+
+}
+/* =========================
+   RESPONSIVE - CANCELAR RESERVA
+========================= */
+
+@media (max-width: 480px) {
+
+    .cancel-modal {
+        padding: 15px;
+    }
+
+    .cancel-modal-card {
+        padding: 32px 20px 24px;
+
+        border-radius: 18px;
+    }
+
+    .cancel-modal-actions {
+        flex-direction: column;
+    }
+
+    .cancel-modal-actions button {
+        width: 100%;
+    }
+
+}
 }

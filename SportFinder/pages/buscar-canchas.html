@@ -206,12 +206,12 @@
                             Desde <strong>S/ 70</strong> por hora
                         </p>
 
-                        <a
-                            href="detalle-cancha.html"
-                            class="card-button"
-                        >
-                            Ver cancha
-                        </a>
+                       <a
+                        href="detalle-cancha.html?cancha=arena7"
+                        class="card-button"
+                     >
+    Ver cancha
+</a>
 
                     </div>
 
@@ -262,11 +262,11 @@
                         </p>
 
                         <a
-                            href="detalle-cancha.html"
-                            class="card-button"
-                        >
-                            Ver cancha
-                        </a>
+    href="detalle-cancha.html?cancha=mama-ocllo"
+    class="card-button"
+>
+    Ver cancha
+</a>
 
                     </div>
 
@@ -317,11 +317,11 @@
                         </p>
 
                         <a
-                            href="detalle-cancha.html"
-                            class="card-button"
-                        >
-                            Ver cancha
-                        </a>
+    href="detalle-cancha.html?cancha=julio-melendez"
+    class="card-button"
+>
+    Ver cancha
+</a>
 
                     </div>
 
@@ -390,6 +390,151 @@
     </div>
 
 </footer>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchForm =
+        document.querySelector(".court-search-form");
+
+    const nameInput =
+        document.getElementById("court-name");
+
+    const districtSelect =
+        document.getElementById("district");
+
+    const sportSelect =
+        document.getElementById("sport");
+
+    const cards =
+        document.querySelectorAll(".card");
+
+    const resultsText =
+        document.querySelector(".results-heading > p");
+
+
+    searchForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+
+        const searchedName =
+            nameInput.value
+                .trim()
+                .toLowerCase();
+
+        const selectedDistrict =
+            districtSelect.value;
+
+        const selectedSport =
+            sportSelect.value;
+
+
+        let visibleCards = 0;
+
+
+        cards.forEach(function (card) {
+
+            const cardName =
+                card.querySelector("h3")
+                    .textContent
+                    .trim()
+                    .toLowerCase();
+
+            const cardLocation =
+                card.querySelector(".location")
+                    .textContent
+                    .trim()
+                    .toLowerCase();
+
+            const cardSport =
+                card.querySelector(".sport-type")
+                    .textContent
+                    .trim()
+                    .toLowerCase();
+
+
+            const matchesName =
+                searchedName === "" ||
+                cardName.includes(searchedName);
+
+
+            let matchesDistrict = true;
+
+            if (selectedDistrict === "pueblo-libre") {
+
+                matchesDistrict =
+                    cardLocation.includes("pueblo libre");
+
+            }
+
+            if (selectedDistrict === "san-miguel") {
+
+                matchesDistrict =
+                    cardLocation.includes("san miguel");
+
+            }
+
+            if (selectedDistrict === "jesus-maria") {
+
+                matchesDistrict =
+                    cardLocation.includes("jesús maría") ||
+                    cardLocation.includes("jesus maria");
+
+            }
+
+
+            let matchesSport = true;
+
+            if (selectedSport === "futbol") {
+
+                matchesSport =
+                    cardSport.includes("fútbol") ||
+                    cardSport.includes("futbol");
+
+            }
+
+            if (selectedSport === "voley") {
+
+                matchesSport =
+                    cardSport.includes("vóley") ||
+                    cardSport.includes("voley");
+
+            }
+
+
+            if (
+                matchesName &&
+                matchesDistrict &&
+                matchesSport
+            ) {
+
+                card.style.display = "";
+
+                visibleCards++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        resultsText.textContent =
+            visibleCards +
+            (
+                visibleCards === 1
+                    ? " cancha disponible"
+                    : " canchas disponibles"
+            );
+
+    });
+
+});
+
+</script>
 
 <script src="../js/auth.js"></script>
 
